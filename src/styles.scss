@@ -1,1 +1,75 @@
-/* You can add global styles to this file, and also import other style files */
+@import "~ng-zorro-antd/grid/style/index.min.css"; /* 引入组件样式 */
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: Microsoft YaHei;
+}
+
+img {
+  user-select: none;
+}
+
+ul,
+ol {
+  list-style: none;
+}
+
+@mixin flex {
+  display: flex;
+  align-items: center;
+}
+a {
+  text-decoration: underline;
+}
+
+@mixin btn {
+  border-radius: 6px;
+  text-align: center;
+  padding: 0 18px;
+  height: 28px;
+  line-height: 28px;
+  background: rgba(255, 255, 255, 0.5);
+}
+
+.g {
+  &-card {
+    background: rgba(255, 255, 255, 0.8);
+    border: 3px solid var(--primary);
+    border-radius: 20px;
+    padding: 20px;
+    &-title {
+      color: var(--primary);
+      font-weight: bold;
+      font-size: 18px;
+    }
+  }
+
+  &-btn {
+    @include btn();
+    border: 1px solid rgba(100, 184, 255, 0.5);
+    color: #68baff;
+    &-danger {
+      @include btn();
+      color: #f55291;
+      border-color: #f55291;
+    }
+  }
+
+  &-flex {
+    @include flex();
+    &-between {
+      @include flex();
+      justify-content: space-between;
+    }
+    &-column {
+      @include flex();
+      flex-direction: column;
+    }
+    &-center {
+      @include flex();
+      justify-content: center;
+    }
+  }
+}

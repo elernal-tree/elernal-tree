@@ -1,0 +1,25 @@
+
+
+.default{
+  // background: url('https://patchwiki.biligame.com/images/yjzs/b/ba/qmpxb19p1pwsl97wuui3hu7c3b76han.gif') no-repeat;
+  background-size: cover;
+  background-position: center;
+  background-attachment: fixed;
+  min-height: 100%;
+  section {
+    overflow-x: hidden;
+    margin: 0 auto;
+    max-width: 900px;
+    padding: 20px 0;
+  
+  }
+
+  .ad-wrapper {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+}
+
+
+
