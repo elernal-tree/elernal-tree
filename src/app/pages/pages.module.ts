@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { ShareModule } from '@app/share';
+import {DragDropModule} from '@angular/cdk/drag-drop';
 
 import { PagesRoutingModule } from './pages-routing.module';
 import { HomeComponent } from './home/home.component';
@@ -20,7 +21,8 @@ import { ArsenalComponent } from './home/component/arsenal/arsenal.component';
     CommonModule,
     PagesRoutingModule,
     ShareModule,
-    ...NgZorroModules
+    ...NgZorroModules,
+    DragDropModule
   ]
 })
 export class PagesModule { }

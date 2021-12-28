@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Core } from '@src/app/model/core';
 import { HttpClient } from '@angular/common/http'
 import { CoreElement } from '@src/app/constants/enum';
+import { outCoreList } from './outCore'
 
 @Component({
   selector: 'app-arsenal',
@@ -36,7 +37,7 @@ export class ArsenalComponent implements OnInit {
 
   ngOnInit(): void {
     this._http.get<Core[]>('/assets/core.json').subscribe(r => {
-      this.coreList = r;
+      this.coreList = r.filter(core => !outCoreList.includes(core.id));
     });
   }
 
