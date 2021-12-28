@@ -12,9 +12,9 @@ import { HttpClientModule } from '@angular/common/http';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ShareModule } from './share';
 import { LayoutModule } from './layout/layout.module';
-import { HomeComponent } from './home/home.component';
 
-import { NgZorroComponets } from './ng-zorro'
+
+
 
 
 registerLocaleData(zh);
@@ -22,7 +22,6 @@ registerLocaleData(zh);
 @NgModule({
   declarations: [
     AppComponent,
-    HomeComponent
   ],
   imports: [
     BrowserModule,
@@ -31,7 +30,7 @@ registerLocaleData(zh);
     BrowserAnimationsModule,
     ShareModule,
     LayoutModule,
-    NgZorroComponets
+  
   ],
   providers: [{ provide: NZ_I18N, useValue: zh_CN }],
   bootstrap: [AppComponent]

@@ -1,0 +1,13 @@
+<nz-select [(ngModel)]="currentCoreElement">
+  <nz-option
+    *ngFor="let item of coreOption"
+    [nzValue]="item.value"
+    [nzLabel]="item.label"></nz-option>
+</nz-select>
+
+<div class="core-box" >
+    <div class="core" *ngFor="let core of currentCoreList">
+        <!-- {{core.data.name}} -->
+        <img [src]="getImgSrc(core.id)" alt="">
+    </div>
+</div>

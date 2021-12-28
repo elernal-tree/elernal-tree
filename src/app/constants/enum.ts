@@ -10,7 +10,7 @@ export enum SkillType {
 export enum CoreElement {
   '火' = 1,
   "水",
-  "土",
+  "地",
   "风",
   "光",
   "暗"

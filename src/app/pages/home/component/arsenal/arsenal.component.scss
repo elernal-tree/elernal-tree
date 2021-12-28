@@ -1,0 +1,11 @@
+.core {
+  &-box {
+    display: flex;
+    flex-wrap: wrap;
+  }
+
+  padding: 5px;
+  img {
+    width: 100px;
+  }
+}
