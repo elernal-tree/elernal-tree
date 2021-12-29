@@ -1,3 +1,24 @@
 <div class="core">
-    <img [src]="imgSrc" alt="">
+  <!-- <div class="core-title">{{core.data.name}}</div> -->
+  <img
+    [src]="imgSrc"
+    class="core-img"
+    nz-popover
+    [nzPopoverTitle]="titleTemplate"
+    [nzPopoverTrigger]="showTip? 'hover' : null"
+    [nzPopoverContent]="contentTemplate" />
+
+  <div class="core-rarity">{{ rarity }}</div>
 </div>
+
+<ng-template #titleTemplate>
+  <span>{{ core.data.name }}</span>
+</ng-template>
+<ng-template #contentTemplate>
+  <div>
+    <div>{{ skill1.name }}：{{ skill1.cnDescription }}</div>
+    <ng-container *ngIf="skill2">
+      <div>{{ skill2.name }}：{{ skill2.cnDescription }}</div>
+    </ng-container>
+  </div>
+</ng-template>

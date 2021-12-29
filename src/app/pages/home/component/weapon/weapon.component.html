@@ -1,50 +1,130 @@
 <div nz-row [nzGutter]="{ xs: 8, sm: 16, md: 24, lg: 32 }">
-    <div nz-col nzSpan="4" cdkDropList>
-        <div class="core-item" cdkDrag>
-            <img src="https://cdn.jsdelivr.net/gh/elernal-tree/elernal-tree@master/static/image/land/钢岩伽玛Ⅱ型.png" alt="">
-        </div>
-        <div class="core-item" cdkDrag>
-            <img src="https://cdn.jsdelivr.net/gh/elernal-tree/elernal-tree@master/static/image/land/钢岩伽玛Ⅱ型.png" alt="">
-        </div>
-        <div class="core-item" cdkDrag>
-            <img src="https://cdn.jsdelivr.net/gh/elernal-tree/elernal-tree@master/static/image/land/钢岩伽玛Ⅱ型.png" alt="">
-        </div>
+  <div nz-col nzSpan="4">
+    <div class="core-item">
+      <app-weapon-item
+        [weapon]="weaponList[0]"
+        [index]="0"
+        (dragDroped)="dragDroped($event)"></app-weapon-item>
     </div>
-    <div cdkDropList nz-col nzSpan="4" style="display: flex; flex-direction: column; justify-content: space-around;">
-        <div class="core-item" cdkDrag>
-            <img src="https://cdn.jsdelivr.net/gh/elernal-tree/elernal-tree@master/static/image/land/钢岩伽玛Ⅱ型.png" alt="">
-        </div>
-        <div class="core-item" cdkDrag>
-            <img src="https://cdn.jsdelivr.net/gh/elernal-tree/elernal-tree@master/static/image/land/钢岩伽玛Ⅱ型.png" alt="">
-        </div>
+    <div class="core-item">
+      <app-weapon-item
+        [weapon]="weaponList[1]"
+        [index]="1"
+        (dragDroped)="dragDroped($event)"></app-weapon-item>
     </div>
-    <div nz-col nzSpan="4" style="display: flex; align-items: center;">
-        <div class="core-item">
-            <img src="https://cdn.jsdelivr.net/gh/elernal-tree/elernal-tree@master/static/image/land/亚特拉斯.png" alt="">
-        </div>
+    <div class="core-item">
+      <app-weapon-item
+        [weapon]="weaponList[2]"
+        [index]="2"
+        (dragDroped)="dragDroped($event)"></app-weapon-item>
     </div>
-    <div nz-col nzSpan="4" style="display: flex; align-items: center;">
-        <div class="core-item">
-            <img src="https://cdn.jsdelivr.net/gh/elernal-tree/elernal-tree@master/static/image/land/亚特拉斯.png" alt="">
-        </div>
+  </div>
+
+  <div
+    nz-col
+    nzSpan="4"
+    style="
+      display: flex;
+      flex-direction: column;
+      justify-content: space-around;
+    ">
+    <div class="core-item">
+      <app-weapon-item
+        [weapon]="weaponList[3]"
+        [index]="3"
+        (dragDroped)="dragDroped($event)"></app-weapon-item>
     </div>
-    <div nz-col nzSpan="4" style="display: flex; flex-direction: column; justify-content: space-around;">
-        <div class="core-item">
-            <img src="https://cdn.jsdelivr.net/gh/elernal-tree/elernal-tree@master/static/image/land/钢岩伽玛Ⅱ型.png" alt="">
-        </div>
-        <div class="core-item">
-            <img src="https://cdn.jsdelivr.net/gh/elernal-tree/elernal-tree@master/static/image/land/钢岩伽玛Ⅱ型.png" alt="">
-        </div>
+    <div class="core-item">
+      <app-weapon-item
+        [weapon]="weaponList[4]"
+        [index]="4"
+        (dragDroped)="dragDroped($event)"></app-weapon-item>
     </div>
-    <div nz-col nzSpan="4">
-        <div class="core-item">
-            <img src="https://cdn.jsdelivr.net/gh/elernal-tree/elernal-tree@master/static/image/land/钢岩伽玛Ⅱ型.png" alt="">
-        </div>
-        <div class="core-item">
-            <img src="https://cdn.jsdelivr.net/gh/elernal-tree/elernal-tree@master/static/image/land/钢岩伽玛Ⅱ型.png" alt="">
-        </div>
-        <div class="core-item">
-            <img src="https://cdn.jsdelivr.net/gh/elernal-tree/elernal-tree@master/static/image/land/钢岩伽玛Ⅱ型.png" alt="">
-        </div>
+  </div>
+  <div nz-col nzSpan="8" class="pannel">
+    <div class="g-flex">
+      <span>主召唤</span>
+      <nz-select [(ngModel)]="mainRobot" nzAllowClear>
+        <nz-option
+          *ngFor="let item of robotOption"
+          [nzLabel]="item.label"
+          [nzValue]="item.value">
+        </nz-option>
+      </nz-select>
+      <nz-input-number
+        [(ngModel)]="mainRobotValue"
+        [nzSize]="'small'"
+        [nzMin]="0"
+        [nzStep]="1"></nz-input-number>
     </div>
+    <div class="g-flex">
+      <span>sub召唤</span>
+      <nz-select [(ngModel)]="subRobot" nzAllowClear>
+        <nz-option
+          *ngFor="let item of robotOption"
+          [nzLabel]="item.label"
+          [nzValue]="item.value">
+        </nz-option>
+      </nz-select>
+      <nz-input-number
+        [(ngModel)]="subRobotValue"
+        [nzSize]="'small'"
+        [nzMin]="0"
+        [nzStep]="1"></nz-input-number>
+    </div>
+    <div>武器技能1</div>
+    <div>武器技能2</div>
+    <div>攻刃</div>
+    <div>生命</div>
+    <div>连击</div>
+    <div>暴击率</div>
+    <div>背水</div>
+    <div>浑身</div>
+  </div>
+  <!-- <div nz-col nzSpan="4" style="display: flex; align-items: center">
+    <div class="core-item">
+      <div class="core-item-img"></div>
+    </div>
+  </div> -->
+  <div
+    nz-col
+    nzSpan="4"
+    style="
+      display: flex;
+      flex-direction: column;
+      justify-content: space-around;
+    ">
+    <div class="core-item">
+      <app-weapon-item
+        [weapon]="weaponList[5]"
+        [index]="5"
+        (dragDroped)="dragDroped($event)"></app-weapon-item>
+    </div>
+    <div class="core-item">
+      <app-weapon-item
+        [weapon]="weaponList[6]"
+        [index]="6"
+        (dragDroped)="dragDroped($event)"></app-weapon-item>
+    </div>
+  </div>
+  <div nz-col nzSpan="4">
+    <div class="core-item">
+      <app-weapon-item
+        [weapon]="weaponList[7]"
+        [index]="7"
+        (dragDroped)="dragDroped($event)"></app-weapon-item>
+    </div>
+    <div class="core-item">
+      <app-weapon-item
+        [weapon]="weaponList[8]"
+        [index]="8"
+        (dragDroped)="dragDroped($event)"></app-weapon-item>
+    </div>
+    <div class="core-item">
+      <app-weapon-item
+        [weapon]="weaponList[9]"
+        [index]="9"
+        (dragDroped)="dragDroped($event)"></app-weapon-item>
+    </div>
+  </div>
 </div>

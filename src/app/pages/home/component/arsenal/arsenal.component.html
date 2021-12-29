@@ -5,9 +5,12 @@
     [nzLabel]="item.label"></nz-option>
 </nz-select>
 
-<div class="core-box" cdkDropList [cdkDropListSortingDisabled]="true">
-    <div class="core" *ngFor="let core of currentCoreList" cdkDrag>
-        <!-- {{core.data.name}} -->
-        <img [src]="getImgSrc(core.id)" alt="">
-    </div>
+<div
+  class="core-box"
+  #coreBox
+ >
+  <div class="core" *ngFor="let core of currentCoreList" appCdrag [dragData]="core">
+    <!-- <img [src]="getImgSrc(core.id)" alt="" /> -->
+    <app-etimg [core]="core"></app-etimg>
+  </div>
 </div>

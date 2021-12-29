@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { EtimgComponent } from './etimg/etimg.component';
+import { NzPopoverModule } from 'ng-zorro-antd/popover'
 
 
 
@@ -9,7 +10,9 @@ import { EtimgComponent } from './etimg/etimg.component';
     EtimgComponent
   ],
   imports: [
-    CommonModule
-  ]
+    CommonModule,
+    NzPopoverModule
+  ],
+  exports: [EtimgComponent]
 })
 export class EtimgModule { }

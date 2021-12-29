@@ -34,7 +34,9 @@
             "prefix": "app",
             "style": "kebab-case"
           }
-        ]
+        ],
+        "@angular-eslint/no-output-rename": "off",
+        "@angular-eslint/no-input-rename": "off"
       }
     },
     {
