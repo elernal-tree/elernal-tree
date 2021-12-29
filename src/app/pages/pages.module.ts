@@ -9,6 +9,7 @@ import { NgZorroModules } from './ng-zorro';
 import { WeaponComponent } from './home/component/weapon/weapon.component';
 import { ArsenalComponent } from './home/component/arsenal/arsenal.component';
 import { WeaponItemComponent } from './home/component/weapon/weapon-item/weapon-item.component';
+import { DataPanelComponent } from './home/component/weapon/data-panel/data-panel.component';
 
 
 
@@ -17,7 +18,8 @@ import { WeaponItemComponent } from './home/component/weapon/weapon-item/weapon-
     HomeComponent,
     WeaponComponent,
     ArsenalComponent,
-    WeaponItemComponent
+    WeaponItemComponent,
+    DataPanelComponent
   ],
   imports: [
     CommonModule,

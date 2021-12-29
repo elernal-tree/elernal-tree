@@ -16,7 +16,9 @@ export class WeaponItemComponent {
       data: any
     }>()
 
-  sLvOption = [{ value: 1 }, { value: 2 }, { value: 3 }, { value: 4 }]
+  @Output() dataChange = new EventEmitter<void>();
+
+  sLvOption = [{ label: 1, value: 0 }, { label: 2, value: 1 }, { label: 3, value: 2 }, { label: 4, value: 3 }]
   constructor() { }
 
   dragDroped(event: any) {
@@ -24,5 +26,9 @@ export class WeaponItemComponent {
       data: event.data,
       index: this.index
     });
+  }
+
+  onDataChange() {
+    this.dataChange.emit();
   }
 }

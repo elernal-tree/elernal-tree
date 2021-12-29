@@ -1,0 +1,142 @@
+<div class="desc">
+  <span class="desc-title">主召唤</span>
+  <nz-select
+    nzSize="small"
+    style="width: 55px"
+    [(ngModel)]="panelData.mainRobotElement">
+    <nz-option
+      *ngFor="let item of coreOption"
+      [nzValue]="item.value"
+      [nzLabel]="item.label"></nz-option>
+  </nz-select>
+  <nz-select
+    nzSize="small"
+    style="width: 80px; margin: 0 5px"
+    [(ngModel)]="panelData.mainRobot"
+    nzAllowClear>
+    <nz-option
+      *ngFor="let item of robotOption"
+      [nzLabel]="item.label"
+      [nzValue]="item.value">
+    </nz-option>
+  </nz-select>
+  <nz-input-number
+    [(ngModel)]="panelData.mainRobotValue"
+    [nzSize]="'small'"
+    [nzMin]="0"
+    [nzStep]="1"></nz-input-number>
+</div>
+<div class="desc">
+  <span class="desc-title">sub召唤</span>
+  <nz-select
+    style="width: 55px"
+    nzSize="small"
+    [(ngModel)]="panelData.subRobotElement">
+    <nz-option
+      *ngFor="let item of coreOption"
+      [nzValue]="item.value"
+      [nzLabel]="item.label"></nz-option>
+  </nz-select>
+  <nz-select
+    nzSize="small"
+    style="width: 80px; margin: 0 5px"
+    [(ngModel)]="panelData.subRobot"
+    nzAllowClear>
+    <nz-option
+      *ngFor="let item of robotOption"
+      [nzLabel]="item.label"
+      [nzValue]="item.value">
+    </nz-option>
+  </nz-select>
+  <nz-input-number
+    [(ngModel)]="panelData.subRobotValue"
+    [nzSize]="'small'"
+    [nzMin]="0"
+    [nzStep]="1"></nz-input-number>
+</div>
+<div class="desc">
+  <span class="desc-title">武器技能1</span>
+</div>
+<div class="desc">
+  <span class="desc-title">武器技能1</span>
+</div>
+<div class="desc">
+  <span class="desc-title">综合HP</span>
+</div>
+<div class="desc">
+  <span class="desc-title">综合攻击力</span>
+</div>
+
+<nz-tabset nzType="card" nzSize="small">
+  <nz-tab nzTitle="结果">
+    <nz-table
+      [nzBordered]="true"
+      nzSize="small"
+      [nzData]="[1]"
+      [nzShowPagination]="false">
+      <thead>
+        <tr>
+          <th>攻刃</th>
+          <th>生命值</th>
+          <th>DA</th>
+          <th>TA</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>488.88</td>
+          <td>488.88</td>
+          <td>488.88</td>
+          <td>488.88</td>
+        </tr>
+      </tbody>
+    </nz-table>
+
+    <nz-table
+      [nzBordered]="true"
+      nzSize="small"
+      [nzData]="[1]"
+      [nzShowPagination]="false">
+      <thead>
+        <tr>
+          <th>背水</th>
+          <th>浑身</th>
+          <th>技伤</th>
+          <th>奥义</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>488.88</td>
+          <td>488.88</td>
+          <td>488.88</td>
+          <td>488.88</td>
+        </tr>
+      </tbody>
+    </nz-table>
+
+    <nz-table
+      [nzBordered]="true"
+      nzSize="small"
+      [nzData]="[1]"
+      [nzShowPagination]="false">
+      <thead>
+        <tr>
+          <th>通常</th>
+          <th>有利</th>
+          <th>不利</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>488.88</td>
+          <td>488.88</td>
+          <td>488.88</td>
+        </tr>
+      </tbody>
+    </nz-table>
+  </nz-tab>
+  <nz-tab nzTitle="连击"></nz-tab>
+  <nz-tab nzTitle="暴击"></nz-tab>
+  <nz-tab nzTitle="奥义"></nz-tab>
+</nz-tabset>

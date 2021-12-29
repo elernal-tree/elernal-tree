@@ -1,31 +1,42 @@
-<div
-  appDragDropBox
-  appCdrag
-  [dragData]="{ index: index, data: weapon }"
-  style="width: 100%; height: 100%"
-  (dragDroped)="dragDroped($event)">
-  <div class="img-box">
-    <app-etimg
-      *ngIf="weapon.core"
-      [showTip]="false"
-      [core]="weapon.core"></app-etimg>
+<div class="core-item">
+  <div
+    appDragDropBox
+    appCdrag
+    class="img-box"
+    [dragData]="{ index: index, data: weapon }"
+    (dragDroped)="dragDroped($event)">
+    <div>
+      <app-etimg
+        *ngIf="weapon.core"
+        [showTip]="false"
+        [core]="weapon.core"></app-etimg>
+    </div>
   </div>
-</div>
-<div class="g-flex">
-  <span>Lv</span>
-  <nz-input-number
-    [(ngModel)]="weapon.lv"
-    [nzSize]="'small'"
-    [nzMin]="1"
-    [nzStep]="1"></nz-input-number>
-</div>
-<div class="g-flex">
-    <span>slv</span>
-    <nz-select [nzSize]="'small'" [(ngModel)]="weapon.sLv" nzAllowClear>
+
+  <div style="padding: 5px">
+    <div class="g-flex" style="margin-bottom: 5px">
+      <span style="width: 20px; flex-shrink: 0">Lv</span>
+      <nz-input-number
+        [(ngModel)]="weapon.lv"
+        (nzBlur)="onDataChange()"
+        [nzSize]="'small'"
+        [nzMin]="1"
+        [nzStep]="1"></nz-input-number>
+    </div>
+    <div class="g-flex">
+      <span style="width: 20px; flex-shrink: 0">slv</span>
+      <nz-select
+        style="flex-grow: 1"
+        [nzSize]="'small'"
+        [(ngModel)]="weapon.sLv"
+        (ngModelChange)="onDataChange()"
+        nzAllowClear>
         <nz-option
           *ngFor="let item of sLvOption"
-          [nzLabel]="item.value"
+          [nzLabel]="item.label"
           [nzValue]="item.value">
         </nz-option>
       </nz-select>
+    </div>
   </div>
+</div>

@@ -1,5 +1,5 @@
 /** section 1 方阵 2 ex 3 普刃 */ 
-export enum SkillType {
+export enum SkillSection {
   maguna = 1,
   ex,
   normal,
@@ -16,8 +16,11 @@ export enum CoreElement {
   "暗"
 }
 
-export enum AttrType {
-  attack = 3,
+/**
+ * core paramType
+ */
+export enum SklAttrType {
+  atk = 3,
   hp,
   da,
   ta,
@@ -25,8 +28,8 @@ export enum AttrType {
   stamina, // 浑身
   critical = 10, // 暴击率
   ub,
-  skillDamage = 13,
-  skillDamageLimit = 23,
+  skill = 13,
+  skillLimit = 23,
   counter = 43,
 }
 
