@@ -4,6 +4,7 @@ import { NzPopoverModule } from 'ng-zorro-antd/popover';
 import { NzInputNumberModule } from 'ng-zorro-antd/input-number';
 import { NzTableModule } from 'ng-zorro-antd/table';
 import { NzTabsModule } from 'ng-zorro-antd/tabs';
+import { NzButtonModule } from 'ng-zorro-antd/button';
 
 
 export const NgZorroModules = [
@@ -12,5 +13,6 @@ export const NgZorroModules = [
     NzPopoverModule,
     NzInputNumberModule,
     NzTableModule,
-    NzTabsModule
+    NzTabsModule,
+    NzButtonModule
 ]

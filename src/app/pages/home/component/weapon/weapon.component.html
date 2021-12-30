@@ -38,7 +38,7 @@
       (dragDroped)="dragDroped($event)"></app-weapon-item>
   </div>
   <div nz-col nzSpan="8" class="pannel">
-    <app-data-panel  [panelData]="panelData"></app-data-panel>
+    <app-data-panel  (dataChange)="countResult()" [panelData]="panelData"></app-data-panel>
   </div>
 
   <div

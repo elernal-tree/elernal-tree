@@ -2,15 +2,15 @@
   <div
     appDragDropBox
     appCdrag
-    class="img-box"
+    class="img-box g-flex"
     [dragData]="{ index: index, data: weapon }"
     (dragDroped)="dragDroped($event)">
-    <div>
-      <app-etimg
-        *ngIf="weapon.core"
-        [showTip]="false"
-        [core]="weapon.core"></app-etimg>
-    </div>
+    <button nzSize="small" (clickStop)="onDeleteCore()" *ngIf="weapon.core" nz-button nzType="default" nzShape="circle" class="close">
+      <i nz-icon nzType="close" nzTheme="outline"></i>
+    </button>
+
+    <app-etimg *ngIf="weapon.core" [showTip]="false" [core]="weapon.core"></app-etimg>
+    <!-- <i nz-icon class="add" *ngIf="!weapon.core" nzType="plus" nzTheme="outline"></i> -->
   </div>
 
   <div style="padding: 5px">
@@ -31,10 +31,7 @@
         [(ngModel)]="weapon.sLv"
         (ngModelChange)="onDataChange()"
         nzAllowClear>
-        <nz-option
-          *ngFor="let item of sLvOption"
-          [nzLabel]="item.label"
-          [nzValue]="item.value">
+        <nz-option *ngFor="let item of sLvOption" [nzLabel]="item.label" [nzValue]="item.value">
         </nz-option>
       </nz-select>
     </div>

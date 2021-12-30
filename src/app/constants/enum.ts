@@ -39,3 +39,9 @@ export enum CoreRarity {
   ssr,
   sp
 }
+
+export enum Robot {
+  maguna = 1,
+  property,
+  normal
+}

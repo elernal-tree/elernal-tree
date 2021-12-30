@@ -31,4 +31,10 @@ export class WeaponItemComponent {
   onDataChange() {
     this.dataChange.emit();
   }
+
+  onDeleteCore() {
+    // this.deleteCore.emit()
+    this.weapon.core = null;
+    this.onDataChange();
+  }
 }
