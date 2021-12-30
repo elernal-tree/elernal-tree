@@ -1,4 +1,4 @@
-name: Build assets
+name: Build local assets
 on:
   workflow_dispatch:
     inputs:
