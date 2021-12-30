@@ -26,7 +26,7 @@ jobs:
           npm i
           echo start build
           git rm -rf statics/static/*
-          ng build --configuration production --deploy-url https://cdn.jsdelivr.net/gh/pcrgvg/gvg_front@${{ github.event.inputs.TAG }}/statics/static/
+          ng build --configuration production --deploy-url https://cdn.jsdelivr.net/gh/elernal-tree/elernal-tree@${{ github.event.inputs.TAG }}/static/web/
           ls statics/static
       - name: commit 
         uses: stefanzweifel/git-auto-commit-action@v4
@@ -35,7 +35,7 @@ jobs:
           add_options: '-A'
           push_options: '--force'
           skip_fetch: true 
-          commit_message: ":bookmark: Release pcrgvg commit tag ${{ github.event.inputs.TAG }}"
+          commit_message: ":bookmark: Release elernal-tree commit tag ${{ github.event.inputs.TAG }}"
           file_pattern: statics/static/*
       - name: update repo
         run: |
