@@ -1,79 +1,85 @@
-<div nz-row [nzGutter]="{ xs: 8, sm: 16, md: 24, lg: 32 }">
-  <div nz-col nzSpan="4">
-    <app-weapon-item
-      [weapon]="weaponList[0]"
-      [index]="0"
-      (dataChange)="countResult()"
-      (dragDroped)="dragDroped($event)"></app-weapon-item>
-
-    <app-weapon-item
-      [weapon]="weaponList[1]"
-      [index]="1"
-      (dataChange)="countResult()"
-      (dragDroped)="dragDroped($event)"></app-weapon-item>
-    <app-weapon-item
-      [weapon]="weaponList[2]"
-      [index]="2"
-      (dataChange)="countResult()"
-      (dragDroped)="dragDroped($event)"></app-weapon-item>
-  </div>
-
-  <div
-    nz-col
-    nzSpan="4"
-    style="
-      display: flex;
-      flex-direction: column;
-      justify-content: space-around;
-    ">
-    <app-weapon-item
-      [weapon]="weaponList[3]"
-      [index]="3"
-      (dataChange)="countResult()"
-      (dragDroped)="dragDroped($event)"></app-weapon-item>
-    <app-weapon-item
-      [weapon]="weaponList[4]"
-      [index]="4"
-      (dataChange)="countResult()"
-      (dragDroped)="dragDroped($event)"></app-weapon-item>
-  </div>
-  <div nz-col nzSpan="8" class="pannel">
+<div nz-row [nzGutter]="8">
+  <div nz-col nzSpan="10" class="pannel">
     <app-data-panel  (dataChange)="countResult()" [panelData]="panelData"></app-data-panel>
   </div>
-
-  <div
-    nz-col
-    nzSpan="4"
-    style="
-      display: flex;
-      flex-direction: column;
-      justify-content: space-around;
-    ">
-    <app-weapon-item
-      [weapon]="weaponList[5]"
-      [index]="5"
-      (dataChange)="countResult()"
-      (dragDroped)="dragDroped($event)"></app-weapon-item>
-    <app-weapon-item
-      [weapon]="weaponList[6]"
-      [index]="6"
-      (dragDroped)="dragDroped($event)"></app-weapon-item>
-  </div>
-  <div nz-col nzSpan="4">
-    <app-weapon-item
-      [weapon]="weaponList[7]"
-      [index]="7"
-      (dataChange)="countResult()"
-      (dragDroped)="dragDroped($event)"></app-weapon-item>
-    <app-weapon-item
-      [weapon]="weaponList[8]"
-      [index]="8"
-      (dataChange)="countResult()"
-      (dragDroped)="dragDroped($event)"></app-weapon-item>
-    <app-weapon-item
-      [weapon]="weaponList[9]"
-      [index]="9"
-      (dataChange)="countResult()"
-      (dragDroped)="dragDroped($event)"></app-weapon-item>
+  
+  <div nz-col nzSpan="14">
+    <div nz-row>
+      <div nz-col nzSpan="6">
+        <app-weapon-item
+          [weapon]="weaponList[0]"
+          [index]="0"
+          (dataChange)="countResult()"
+          (dragDroped)="dragDroped($event)"></app-weapon-item>
+    
+        <app-weapon-item
+          [weapon]="weaponList[1]"
+          [index]="1"
+          (dataChange)="countResult()"
+          (dragDroped)="dragDroped($event)"></app-weapon-item>
+        <app-weapon-item
+          [weapon]="weaponList[2]"
+          [index]="2"
+          (dataChange)="countResult()"
+          (dragDroped)="dragDroped($event)"></app-weapon-item>
+      </div>
+    
+      <div
+        nz-col
+        nzSpan="6"
+        style="
+          display: flex;
+          flex-direction: column;
+          justify-content: space-around;
+        ">
+        <app-weapon-item
+          [weapon]="weaponList[3]"
+          [index]="3"
+          (dataChange)="countResult()"
+          (dragDroped)="dragDroped($event)"></app-weapon-item>
+        <app-weapon-item
+          [weapon]="weaponList[4]"
+          [index]="4"
+          (dataChange)="countResult()"
+          (dragDroped)="dragDroped($event)"></app-weapon-item>
+      </div>
+    
+    
+      <div
+        nz-col
+        nzSpan="6"
+        style="
+          display: flex;
+          flex-direction: column;
+          justify-content: space-around;
+        ">
+        <app-weapon-item
+          [weapon]="weaponList[5]"
+          [index]="5"
+          (dataChange)="countResult()"
+          (dragDroped)="dragDroped($event)"></app-weapon-item>
+        <app-weapon-item
+          [weapon]="weaponList[6]"
+          [index]="6"
+          (dragDroped)="dragDroped($event)"></app-weapon-item>
+      </div>
+      <div nz-col nzSpan="6">
+        <app-weapon-item
+          [weapon]="weaponList[7]"
+          [index]="7"
+          (dataChange)="countResult()"
+          (dragDroped)="dragDroped($event)"></app-weapon-item>
+        <app-weapon-item
+          [weapon]="weaponList[8]"
+          [index]="8"
+          (dataChange)="countResult()"
+          (dragDroped)="dragDroped($event)"></app-weapon-item>
+        <app-weapon-item
+          [weapon]="weaponList[9]"
+          [index]="9"
+          (dataChange)="countResult()"
+          (dragDroped)="dragDroped($event)"></app-weapon-item>
+      </div>
+    </div>
   </div>
 </div>

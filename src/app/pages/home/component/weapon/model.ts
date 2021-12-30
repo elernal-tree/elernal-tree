@@ -19,6 +19,7 @@ export interface PanelData {
     enmity: Section,
     stamina: Section,
     critical: Section,
+    criticalDamage: Section,
     ub: Section,
     ubLimit: Section,
     skillLimit: Section,
