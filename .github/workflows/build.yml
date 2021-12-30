@@ -25,9 +25,9 @@ jobs:
           npm install -g @angular/cli
           npm i
           echo start build
-          git rm -rf statics/static/*
+          git rm -rf static/web/*
           ng build --configuration production --deploy-url https://cdn.jsdelivr.net/gh/elernal-tree/elernal-tree@${{ github.event.inputs.TAG }}/static/web/
-          ls statics/static
+          ls static/web
       - name: commit 
         uses: stefanzweifel/git-auto-commit-action@v4
         with:
@@ -36,7 +36,7 @@ jobs:
           push_options: '--force'
           skip_fetch: true 
           commit_message: ":bookmark: Release elernal-tree commit tag ${{ github.event.inputs.TAG }}"
-          file_pattern: statics/static/*
+          file_pattern: static/web/*
       - name: update repo
         run: |
           git pull
