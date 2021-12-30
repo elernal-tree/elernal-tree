@@ -40,7 +40,7 @@ jobs:
       - name: update repo
         run: |
           git pull
-          ls statics/static
+          ls static/web/*
       - uses: actions/checkout@v2
       - name: Release to github
         uses: ncipollo/release-action@v1
