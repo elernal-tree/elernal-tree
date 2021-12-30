@@ -5,10 +5,18 @@
     class="core-img"
     nz-popover
     [nzPopoverTitle]="titleTemplate"
-    [nzPopoverTrigger]="showTip? 'hover' : null"
+    [nzPopoverTrigger]="showTip ? 'hover' : null"
     [nzPopoverContent]="contentTemplate" />
 
-  <div class="core-name">{{coreName}}</div>
+  <div
+    class="core-name"
+    nz-popover
+    nzPopoverOverlayClassName="ant-popover-maxwidth"
+    [nzPopoverTitle]="titleTemplate"
+    [nzPopoverContent]="contentTemplate"
+    [nzPopoverTrigger]="!showTip ? 'hover' : null">
+    {{ coreName }}
+  </div>
   <div class="core-rarity">{{ rarity }}</div>
 </div>
 

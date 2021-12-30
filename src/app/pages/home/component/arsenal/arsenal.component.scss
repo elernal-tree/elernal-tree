@@ -8,3 +8,7 @@
 
   padding: 5px;
 }
+
+nz-tabset ::ng-deep > .ant-tabs-nav {
+  margin-bottom: 8px;
+}

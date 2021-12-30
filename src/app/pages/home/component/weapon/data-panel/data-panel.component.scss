@@ -1,9 +1,25 @@
 .desc {
-    display: flex;
-    align-items: center;
-    padding: 5px 0;
-    &-title {
-        width: 80px;
-    }
+  display: flex;
+  align-items: center;
+  padding: 5px 0;
+  &-title {
+    width: 80px;
+  }
+}
 
+.pure {
+  &-hp {
+    color: #3eb503;
+    font-size: 18px;
+    line-height: 1;
+    text-shadow: 0 0 2px #150f0f, 0 0 2px #150f0f, 0 0 2px #150f0f, 0 0 4px #150f0f, 0 0 4px #150f0f,
+      0 0 4px #150f0f;
+  }
+  &-atk {
+    color: #ff5d25;
+    font-size: 18px;
+    line-height: 1;
+    text-shadow: 0 0 2px #150f0f, 0 0 2px #150f0f, 0 0 2px #150f0f, 0 0 4px #150f0f, 0 0 4px #150f0f,
+      0 0 4px #150f0f;
+  }
 }

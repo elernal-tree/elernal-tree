@@ -3,8 +3,12 @@ export enum SkillSection {
   maguna = 1,
   ex,
   normal,
+}
 
-
+export enum CoreSeries {
+  maguna = 1,
+  normal,
+  ex,
 }
 
 export enum CoreElement {

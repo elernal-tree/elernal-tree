@@ -1,16 +1,32 @@
-<nz-select nzSize="small"  [(ngModel)]="currentCoreElement">
+<nz-select nzSize="small" [(ngModel)]="currentCoreElement">
   <nz-option
     *ngFor="let item of coreOption"
     [nzValue]="item.value"
     [nzLabel]="item.label"></nz-option>
 </nz-select>
 
-<div
-  class="core-box"
-  #coreBox
- >
-  <div class="core" *ngFor="let core of currentCoreList" appCdrag [dragData]="core">
-    <!-- <img [src]="getImgSrc(core.id)" alt="" /> -->
-    <app-etimg [core]="core"></app-etimg>
-  </div>
-</div>
+<nz-tabset nzType="card" nzSize="small" style="margin-top: 8px;">
+  <nz-tab nzTitle="泰坦">
+    <div class="core-box">
+      <div class="core" *ngFor="let core of magunaCore" appCdrag [dragData]="core">
+        <app-etimg [core]="core"></app-etimg>
+      </div>
+    </div>
+  </nz-tab>
+
+  <nz-tab nzTitle="诸神">
+    <div class="core-box">
+      <div class="core" *ngFor="let core of normalCore" appCdrag [dragData]="core">
+        <app-etimg [core]="core"></app-etimg>
+      </div>
+    </div>
+  </nz-tab>
+
+  <nz-tab nzTitle="星恒">
+    <div class="core-box">
+      <div class="core" *ngFor="let core of exCore" appCdrag [dragData]="core">
+        <app-etimg [core]="core"></app-etimg>
+      </div>
+    </div>
+  </nz-tab>
+</nz-tabset>

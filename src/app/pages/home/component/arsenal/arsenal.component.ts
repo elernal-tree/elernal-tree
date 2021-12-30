@@ -1,7 +1,7 @@
 import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import { Core } from '@src/app/model/core';
 import { HttpClient } from '@angular/common/http'
-import { CoreElement } from '@src/app/constants/enum';
+import { CoreElement, CoreSeries } from '@src/app/constants/enum';
 import { outCoreList } from './outCore';
 import { CdkDragDrop, CdkDragStart, CdkDragMove } from '@angular/cdk/drag-drop'
 import { CoreOption } from '@src/app/constants/contants';
@@ -31,7 +31,17 @@ export class ArsenalComponent implements OnInit {
   }
 
 
+  get magunaCore() {
+    return this.currentCoreList.filter(core => core.data.coreSeries === CoreSeries.maguna)
+  }
 
+  get normalCore() {
+    return this.currentCoreList.filter(core => core.data.coreSeries === CoreSeries.normal)
+  }
+
+  get exCore() {
+    return this.currentCoreList.filter(core => core.data.coreSeries === CoreSeries.ex)
+  }
 
 }
 
