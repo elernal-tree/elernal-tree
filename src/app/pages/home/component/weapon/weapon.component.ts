@@ -97,7 +97,7 @@ export class WeaponComponent {
         sLv: 3
       };
     } else {
-      if (this.weaponList[ev.index]) {
+      if (this.weaponList[ev.index].core) {
         this.weaponList[data.index] = this.weaponList[ev.index];
       }
       this.weaponList[ev.index] = data.data;
