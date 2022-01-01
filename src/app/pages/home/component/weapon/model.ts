@@ -19,8 +19,10 @@ export interface PanelData {
     ta: Section,
     enmity: Section,
     stamina: Section,
+    /** 暴击率 */
     critical: Section,
-    criticalDamage: Section,
+    /** 暴击伤害提升百分比 */
+    criticalDamageRatio: Section,
     ub: Section,
     ubLimit: Section,
     skillLimit: Section,
@@ -31,15 +33,24 @@ export interface PanelData {
 
 
 export interface ExtraInfo {
+    /** 攻击力 */
     atk: number,
+    /** 属攻 */
     attribute: number,
+    /** 技能攻刃 */
     skill: number,
+    /** UB攻刃 */
     ub: number,
     cri: number, // 暴击率
     criDamageRadio: number, // 爆伤提升
+    /** 攻刃 */
     atkBuff: number,
+    /** 地方防御力 */
     defense: number,
+    /** 当前hp */
     hp: number,
-    enmity: number,
-    stamina: number
+    weaponEnmity: number,
+    weaponStamina: number
+    sklStamina: number
+    sklEnmity: number
 }

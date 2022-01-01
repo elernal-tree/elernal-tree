@@ -1,27 +1,7 @@
 <div style="padding: 5px 0">
-  计算场景： 主角hp为50%，由于浑身公式暂不明确，使用的回响面板数值。技能伤害为200%，奥义为300%
+  计算场景：由于浑身公式暂不明确，使用的回响面板数值。技能伤害为200%，奥义为300%
 </div>
-<div class="g-flex" style="margin-bottom: 8px">
-  <div class="desc-title">主角攻击力</div>
-  <nz-input-number
-    style="width: 80px"
-    [(ngModel)]="extra.atk"
-    [nzSize]="'small'"
-    [nzMin]="0"
-    [nzStep]="1"></nz-input-number>
-  <!-- <div class="desc-title">hp(%)</div>
-  <nz-input-number
-    [(ngModel)]="extra.hp"
-    [nzSize]="'small'"
-    [nzMin]="0"
-    [nzStep]="1"></nz-input-number> -->
-  <div class="desc-title">敌人防御力</div>
-  <nz-input-number
-    [(ngModel)]="extra.defense"
-    [nzSize]="'small'"
-    [nzMin]="1"
-    [nzStep]="1"></nz-input-number>
-</div>
+
 <nz-table [nzBordered]="true" nzSize="small" [nzData]="[1]" [nzShowPagination]="false">
   <thead>
     <tr>

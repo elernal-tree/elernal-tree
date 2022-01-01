@@ -15,7 +15,7 @@ export class ResultComponent  {
   @Input() enmity: number;
   @Input() stamina: number;
   @Input() critical: number;
-  @Input() criticalDamage: number;
+  @Input() criticalDamageRatio: number;
   @Input() skill: number;
   @Input() skillLimit: number;
   @Input() ub: number;

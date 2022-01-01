@@ -15,6 +15,8 @@ export class AttckComponent {
   @Input() ubLimit: number;
   @Input() ub: number;
   @Input() skill: number;
+  @Input() criticalDamageRatio: number;
+
   constructor() {}
 
   fixed(num: number) {
@@ -34,18 +36,18 @@ export class AttckComponent {
   }
 
   get criDamage() {
-    return this.fixed(this.atkDamage * (CriRatio.noraml + this.extra.criDamageRadio / 100));
+    return this.fixed(this.atkDamage * (CriRatio.noraml + this.criticalDamageRatio));
   }
 
   get criUpDamage() {
     return this.fixed(
-      this.atkDamage * AtkRatio.up * (CriRatio.up + this.extra.criDamageRadio / 100)
+      this.atkDamage * AtkRatio.up * (CriRatio.up + this.criticalDamageRatio)
     );
   }
 
   get criDownDamage() {
     return this.fixed(
-      this.atkDamage * AtkRatio.down * (CriRatio.noraml + this.extra.criDamageRadio / 100)
+      this.atkDamage * AtkRatio.down * (CriRatio.noraml + this.criticalDamageRatio)
     );
   }
 

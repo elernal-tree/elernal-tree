@@ -40,12 +40,14 @@ export class DataPanelComponent {
     ub: 0,
     cri: 0,
     criDamageRadio: 0,
-    atkBuff: 0,
+    atkBuff: 20,
     defense: 10,
     /** 当前hp百分比 */
     hp: 50,
-    enmity: 0,
-    stamina: 0,
+    weaponEnmity: 0,
+    weaponStamina: 0,
+    sklEnmity: 0,
+    sklStamina: 0,
   };
 
   constructor() {}
@@ -218,7 +220,7 @@ export class DataPanelComponent {
   }
 
   get skill() {
-    return this.magunaSkl + this.mormalSkl + this.exSkl;
+    return this.magunaSkl + this.mormalSkl + this.exSkl + this.extra.skill / 100;
   }
 
   get magunaUb() {
@@ -232,7 +234,7 @@ export class DataPanelComponent {
     return this.calcOtherBonus(this.panelData.ub.ex, 0);
   }
   get ub() {
-    return this.magunaUb + this.noramlUb + this.exUb;
+    return this.magunaUb + this.noramlUb + this.exUb + this.extra.ub / 100;
   }
   /**老王 方阵 ex每个区间 上限为 0~50% */
   getUbLimit(ub: number) {
@@ -293,21 +295,26 @@ export class DataPanelComponent {
     return this.calcOtherBonus(this.panelData.critical.ex, 0);
   }
   get critical() {
-    return this.magunaCri + this.normalCri + this.exCri;
+    return this.magunaCri + this.normalCri + this.exCri + this.extra.cri / 100;
   }
 
-  get magunaCriticalDamage() {
-    return this.calcOtherBonus(this.panelData.criticalDamage.maguna, this.roboteBonus.maguna);
+  get magunaCriticalDamageRatio() {
+    return this.calcOtherBonus(this.panelData.criticalDamageRatio.maguna, this.roboteBonus.maguna);
   }
-  get normalCriticalDamage() {
-    return this.calcOtherBonus(this.panelData.criticalDamage.normal, this.roboteBonus.normal);
+  get normalCriticalDamageRatio() {
+    return this.calcOtherBonus(this.panelData.criticalDamageRatio.normal, this.roboteBonus.normal);
   }
-  get exCriticalDamage() {
-    return this.calcOtherBonus(this.panelData.criticalDamage.ex, 0);
+  get exCriticalDamageRatio() {
+    return this.calcOtherBonus(this.panelData.criticalDamageRatio.ex, 0);
   }
 
-  get criticalDamage() {
-    return this.magunaCriticalDamage + this.normalCriticalDamage + this.exCriticalDamage;
+  get criticalDamageRatio() {
+    return (
+      this.magunaCriticalDamageRatio +
+      this.normalCriticalDamageRatio +
+      this.exCriticalDamageRatio +
+      this.extra.criDamageRadio / 100
+    );
   }
   /** 基础10防御  由于浑身公式不明确 所以计算直接使用的面板数值*/
   get atkDamage() {
@@ -315,8 +322,10 @@ export class DataPanelComponent {
       ((this.panelData.pureAtk + this.extra.atk) *
         (1 + this.atk) *
         (1 + this.extra.atkBuff / 100) *
-        (1 + (this.enmity + this.extra.enmity / 100) * this.enmityByHp) *
-        (1 + (this.stamina + this.extra.stamina / 100))) /
+        (1 + (this.enmity + this.extra.weaponEnmity / 100) * this.enmityByHp) *
+        (1 + (this.stamina + this.extra.weaponStamina / 100)) *
+        (1 + (this.extra.sklEnmity / 100) * this.enmityByHp) *
+        (1 + this.extra.sklStamina / 100)) /
       this.extra.defense
     );
   }

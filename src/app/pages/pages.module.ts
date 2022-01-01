@@ -18,6 +18,7 @@ import { AttckComponent } from './home/component/weapon/data-panel/attck/attck.c
 import { ExpectComponent } from './home/component/weapon/data-panel/expect/expect.component';
 import { SkillComponent } from './home/component/weapon/data-panel/skill/skill.component';
 import { UbComponent } from './home/component/weapon/data-panel/ub/ub.component';
+import { ExtraInfoComponent } from './home/component/weapon/data-panel/extra-info/extra-info.component';
 
 const icons: IconDefinition[] = [ PlusOutline ];
 
@@ -32,7 +33,8 @@ const icons: IconDefinition[] = [ PlusOutline ];
     AttckComponent,
     ExpectComponent,
     SkillComponent,
-    UbComponent
+    UbComponent,
+    ExtraInfoComponent
   ],
   imports: [
     CommonModule,

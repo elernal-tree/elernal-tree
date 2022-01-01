@@ -60,7 +60,7 @@ export class WeaponComponent {
       ex: 0,
       maguna: 0,
     },
-    criticalDamage: {
+    criticalDamageRatio: {
       normal: 0,
       ex: 0,
       maguna: 0,

@@ -44,47 +44,7 @@
     [nzMin]="0"
     [nzStep]="1"></nz-input-number>
 </div>
-<!-- <div class="desc">
-  <div>攻刃</div>
-  <nz-input-number
-    [(ngModel)]="extra.atkBuff"
-    [nzSize]="'small'"
-    [nzMin]="0"
-    [nzStep]="1"></nz-input-number>
-  <div>属攻</div>
-  <nz-input-number
-    [(ngModel)]="extra.attribute"
-    [nzSize]="'small'"
-    [nzMin]="0"
-    [nzStep]="1"></nz-input-number>
-  <div>技伤</div>
-  <nz-input-number
-    [(ngModel)]="extra.skill"
-    [nzSize]="'small'"
-    [nzMin]="0"
-    [nzStep]="1"></nz-input-number>
-</div> -->
 
-<!-- <div class="desc">
-  <div class="desc-label">奥伤</div>
-  <nz-input-number
-    [(ngModel)]="extra.ub"
-    [nzSize]="'small'"
-    [nzMin]="0"
-    [nzStep]="1"></nz-input-number>
-  <div class="desc-label">暴击</div>
-  <nz-input-number
-    [(ngModel)]="extra.cri"
-    [nzSize]="'small'"
-    [nzMin]="0"
-    [nzStep]="1"></nz-input-number>
-  <div class="desc-label">爆伤</div>
-  <nz-input-number
-    [(ngModel)]="extra.criDamage"
-    [nzSize]="'small'"
-    [nzMin]="0"
-    [nzStep]="1"></nz-input-number>
-</div> -->
 <div class="g-flex">
   <div class="desc">
     <span class="desc-title">综合HP</span>
@@ -97,6 +57,9 @@
 </div>
 
 <nz-tabset nzSize="small">
+  <nz-tab nzTitle="额外信息">
+    <app-extra-info [extra]="extra"></app-extra-info>
+  </nz-tab>
   <nz-tab nzTitle="结果">
     <app-result
       [atk]="atk"
@@ -105,7 +68,7 @@
       [ta]="ta"
       [enmity]="enmity"
       [critical]="critical"
-      [criticalDamage]="criticalDamage"
+      [criticalDamageRatio]="criticalDamageRatio"
       [skill]="skill"
       [skillLimit]="skillLimit"
       [ub]="ub"
@@ -120,6 +83,7 @@
       [ubLimit]="ubLimit"
       [ub]="ub"
       [skill]="skill"
+      [criticalDamageRatio]="criticalDamageRatio"
       [extra]="extra"></app-attck>
   </nz-tab>
 
