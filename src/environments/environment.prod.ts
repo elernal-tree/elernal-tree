@@ -1,3 +1,4 @@
 export const environment = {
-  production: true
+  production: true,
+  ImgUrl:"/assets/image/core/{id}.png"
 };

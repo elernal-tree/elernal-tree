@@ -1,4 +1,4 @@
-name: Build assets
+name: Build cdn assets
 on:
   workflow_dispatch:
     inputs:
@@ -26,7 +26,7 @@ jobs:
           npm i
           echo start build
           git rm -rf static/web/*
-          ng build --configuration production --deploy-url https://cdn.jsdelivr.net/gh/elernal-tree/elernal-tree@${{ github.event.inputs.TAG }}/static/web/
+          ng build --configuration cdn --deploy-url https://cdn.jsdelivr.net/gh/elernal-tree/elernal-tree@${{ github.event.inputs.TAG }}/static/web/
           ls static/web
       - name: commit 
         uses: stefanzweifel/git-auto-commit-action@v4

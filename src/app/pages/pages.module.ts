@@ -13,6 +13,11 @@ import { DataPanelComponent } from './home/component/weapon/data-panel/data-pane
 import { NzIconModule } from 'ng-zorro-antd/icon';
 import { IconDefinition } from '@ant-design/icons-angular';
 import { PlusOutline } from '@ant-design/icons-angular/icons';
+import { ResultComponent } from './home/component/weapon/data-panel/result/result.component';
+import { AttckComponent } from './home/component/weapon/data-panel/attck/attck.component';
+import { ExpectComponent } from './home/component/weapon/data-panel/expect/expect.component';
+import { SkillComponent } from './home/component/weapon/data-panel/skill/skill.component';
+import { UbComponent } from './home/component/weapon/data-panel/ub/ub.component';
 
 const icons: IconDefinition[] = [ PlusOutline ];
 
@@ -22,7 +27,12 @@ const icons: IconDefinition[] = [ PlusOutline ];
     WeaponComponent,
     ArsenalComponent,
     WeaponItemComponent,
-    DataPanelComponent
+    DataPanelComponent,
+    ResultComponent,
+    AttckComponent,
+    ExpectComponent,
+    SkillComponent,
+    UbComponent
   ],
   imports: [
     CommonModule,

@@ -4,7 +4,7 @@ import { HttpClient } from '@angular/common/http';
 import { CoreElement, CoreSeries } from '@src/app/constants/enum';
 import { outCoreList } from './outCore';
 import { CdkDragDrop, CdkDragStart, CdkDragMove } from '@angular/cdk/drag-drop';
-import { CoreOption } from '@src/app/constants/contants';
+import { CoreOption } from '@src/app/constants/constants';
 
 @Component({
   selector: 'app-arsenal',

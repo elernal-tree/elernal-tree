@@ -1,7 +1,7 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
-import { CoreOption } from '@src/app/constants/contants';
+import { CoreOption, Limit } from '@src/app/constants/constants';
 import { Robot } from '@src/app/constants/enum';
-import { PanelData } from '../model';
+import { ExtraInfo, PanelData } from '../model';
 
 const calcAtk = '1 + x * (100 + y) / 10000';
 const calcOther = 'x * (100 + y) / 10000';
@@ -19,7 +19,7 @@ export class DataPanelComponent {
     },
     {
       label: '属性',
-      value: Robot.property,
+      value: Robot.attribute,
     },
     {
       label: '老王',
@@ -29,11 +29,24 @@ export class DataPanelComponent {
 
   coreOption = CoreOption;
 
-  nzWidthConfig = new Array(4).fill('25%');
-
   @Input() panelData: PanelData;
 
   @Output() dataChange = new EventEmitter<void>();
+
+  extra: ExtraInfo = {
+    atk: 0,
+    attribute: 0,
+    skill: 0,
+    ub: 0,
+    cri: 0,
+    criDamageRadio: 0,
+    atkBuff: 0,
+    defense: 10,
+    /** 当前hp百分比 */
+    hp: 50,
+    enmity: 0,
+    stamina: 0,
+  };
 
   constructor() {}
 
@@ -52,8 +65,12 @@ export class DataPanelComponent {
     return eval(calcOther.replace('x', `${x}`).replace('y', `${y}`));
   }
 
-  get propertyBonus() {
-    return (100 + (this.roboteBonus.property ? +this.roboteBonus.property : 0)) / 100;
+  get attributeBonus() {
+    return (
+      (100 +
+        (this.roboteBonus.attribute ? +this.roboteBonus.attribute + this.extra.attribute : 0)) /
+      100
+    );
   }
 
   get roboteBonus() {
@@ -64,9 +81,9 @@ export class DataPanelComponent {
       normal:
         (this.panelData.mainRobot === Robot.normal ? this.panelData.mainRobotValue : 0) +
         (this.panelData.subRobot === Robot.normal ? this.panelData.subRobotValue : 0),
-      property:
-        (this.panelData.mainRobot === Robot.property ? this.panelData.mainRobotValue : 0) +
-        (this.panelData.subRobot === Robot.property ? this.panelData.subRobotValue : 0),
+      attribute:
+        (this.panelData.mainRobot === Robot.attribute ? this.panelData.mainRobotValue : 0) +
+        (this.panelData.subRobot === Robot.attribute ? this.panelData.subRobotValue : 0),
     };
   }
 
@@ -87,13 +104,13 @@ export class DataPanelComponent {
   }
 
   get atk() {
-    return this.fixed(this.nagunaAtk * this.normalAtk * this.exAtk * this.propertyBonus - 1);
+    return this.nagunaAtk * this.normalAtk * this.exAtk * this.attributeBonus - 1;
   }
   /**
    * 上限 -70%~
    */
   getHpLimit(hp: number) {
-    return hp <= -0.7 ? -0.7 : hp;
+    return hp <= Limit.hp ? Limit.hp : hp;
   }
   get magunaHp() {
     return this.getHpLimit(this.calcOtherBonus(this.panelData.hp.maguna, this.roboteBonus.maguna));
@@ -109,7 +126,7 @@ export class DataPanelComponent {
    */
   get hp() {
     const hp = this.magunaHp + this.normalHp + this.exHp;
-    return this.fixed(hp <= -9.9999 ? -9.9999 : hp);
+    return hp <= Limit.totalHp ? Limit.totalHp : hp;
   }
 
   get magunaDa() {
@@ -128,7 +145,7 @@ export class DataPanelComponent {
    */
   get da() {
     const coreDa = this.magunaDa + this.normalDa + this.exDa;
-    return this.fixed(coreDa >= 7.5 ? 7.5 : coreDa);
+    return coreDa >= Limit.successionChance ? Limit.successionChance : coreDa;
   }
 
   get magunaTa() {
@@ -146,7 +163,17 @@ export class DataPanelComponent {
    */
   get ta() {
     const coreTa = this.magunaTa + this.normalTa + this.exTa;
-    return this.fixed(coreTa >= 7.5 ? 7.5 : coreTa);
+    return coreTa >= Limit.successionChance ? Limit.successionChance : coreTa;
+  }
+  /**
+   * 根据背水曲线公式计算当前hp的背水攻刃加成 80%hp以上为0
+   */
+  get enmityByHp() {
+    if (this.extra.hp >= 80) {
+      return 0;
+    }
+    const hp = this.extra.hp / 100;
+    return (1 + 2 * hp) * hp;
   }
 
   get magunaEnmity() {
@@ -159,9 +186,9 @@ export class DataPanelComponent {
   get exEnmity() {
     return this.calcOtherBonus(this.panelData.enmity.ex, 0);
   }
-
+  /** 综合背水 */
   get enmity() {
-    return this.fixed(this.magunaEnmity + this.normalEnmity + this.exEnmity);
+    return this.magunaEnmity + this.normalEnmity + this.exEnmity;
   }
 
   get magunaStamina() {
@@ -175,7 +202,7 @@ export class DataPanelComponent {
     return this.calcOtherBonus(this.panelData.stamina.ex, 0);
   }
   get stamina() {
-    return this.fixed(this.magunaStamina + this.normalStamina + this.exStamina);
+    return this.magunaStamina + this.normalStamina + this.exStamina;
   }
 
   get magunaSkl() {
@@ -191,7 +218,7 @@ export class DataPanelComponent {
   }
 
   get skill() {
-    return this.fixed(this.magunaSkl + this.mormalSkl + this.exSkl);
+    return this.magunaSkl + this.mormalSkl + this.exSkl;
   }
 
   get magunaUb() {
@@ -205,11 +232,11 @@ export class DataPanelComponent {
     return this.calcOtherBonus(this.panelData.ub.ex, 0);
   }
   get ub() {
-    return this.fixed(this.magunaUb + this.noramlUb + this.exUb);
+    return this.magunaUb + this.noramlUb + this.exUb;
   }
-  /** ubLimit 0~50% */
+  /**老王 方阵 ex每个区间 上限为 0~50% */
   getUbLimit(ub: number) {
-    return ub >= 0.5 ? 0.5 : ub;
+    return ub >= Limit.ubBonus ? Limit.ubBonus : ub;
   }
 
   get magunaUbLimit() {
@@ -229,12 +256,12 @@ export class DataPanelComponent {
   }
 
   get ubLimit() {
-    return this.fixed(this.magunaUbLimit + this.noramlUbLimit + this.exUbLimit);
+    return this.magunaUbLimit + this.noramlUbLimit + this.exUbLimit;
   }
 
-  /** skillLimit 0~50% */
+  /** 老王 方阵 ex每个区间 上限为  skillLimit 0~50% */
   getSkillLimit(skill: number) {
-    return skill >= 0.5 ? 0.5 : skill;
+    return skill >= Limit.sklBonus ? Limit.sklBonus : skill;
   }
 
   get magunaSklLimit() {
@@ -252,7 +279,7 @@ export class DataPanelComponent {
   }
 
   get skillLimit() {
-    return this.fixed(this.magunaSklLimit + this.normalSklLimit + this.exSklLimit);
+    return this.magunaSklLimit + this.normalSklLimit + this.exSklLimit;
   }
 
   get magunaCri() {
@@ -266,7 +293,7 @@ export class DataPanelComponent {
     return this.calcOtherBonus(this.panelData.critical.ex, 0);
   }
   get critical() {
-    return this.fixed(this.magunaCri + this.normalCri + this.exCri);
+    return this.magunaCri + this.normalCri + this.exCri;
   }
 
   get magunaCriticalDamage() {
@@ -280,8 +307,17 @@ export class DataPanelComponent {
   }
 
   get criticalDamage() {
-    return this.fixed(
-      this.magunaCriticalDamage + this.normalCriticalDamage + this.exCriticalDamage
+    return this.magunaCriticalDamage + this.normalCriticalDamage + this.exCriticalDamage;
+  }
+  /** 基础10防御  由于浑身公式不明确 所以计算直接使用的面板数值*/
+  get atkDamage() {
+    return (
+      ((this.panelData.pureAtk + this.extra.atk) *
+        (1 + this.atk) *
+        (1 + this.extra.atkBuff / 100) *
+        (1 + (this.enmity + this.extra.enmity / 100) * this.enmityByHp) *
+        (1 + (this.stamina + this.extra.stamina / 100))) /
+      this.extra.defense
     );
   }
 }

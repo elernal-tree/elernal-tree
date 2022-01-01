@@ -21,7 +21,7 @@ export class WeaponComponent {
     element: CoreElement.风,
     mainRobot: Robot.maguna,
     mainRobotValue: 0,
-    subRobot: Robot.property,
+    subRobot: Robot.attribute,
     subRobotValue: 0,
     pureAtk: 0,
     pureHp: 0,
@@ -84,7 +84,7 @@ export class WeaponComponent {
       normal: 0,
       ex: 0,
       maguna: 0,
-    },
+    }
   };
 
   constructor() {}
@@ -340,5 +340,4 @@ export class WeaponComponent {
       }
     });
   }
-
 }

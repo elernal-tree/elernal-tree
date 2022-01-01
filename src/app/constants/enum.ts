@@ -46,6 +46,12 @@ export enum CoreRarity {
 
 export enum Robot {
   maguna = 1,
-  property,
+  attribute,
   normal
+}
+
+export enum AtkType {
+  sa = 1,
+  da,
+  ta,
 }

@@ -29,7 +29,7 @@
     [nzStep]="1"></nz-input-number>
 </div>
 <div class="desc">
-  <span class="desc-title">sub召唤</span>
+  <span class="desc-title">友召</span>
   <nz-select
     nzSize="small"
     style="width: 80px; margin: 0 5px"
@@ -44,12 +44,47 @@
     [nzMin]="0"
     [nzStep]="1"></nz-input-number>
 </div>
-<div class="desc">
-  <span class="desc-title">武器技能1</span>
-</div>
-<div class="desc">
-  <span class="desc-title">武器技能2</span>
-</div>
+<!-- <div class="desc">
+  <div>攻刃</div>
+  <nz-input-number
+    [(ngModel)]="extra.atkBuff"
+    [nzSize]="'small'"
+    [nzMin]="0"
+    [nzStep]="1"></nz-input-number>
+  <div>属攻</div>
+  <nz-input-number
+    [(ngModel)]="extra.attribute"
+    [nzSize]="'small'"
+    [nzMin]="0"
+    [nzStep]="1"></nz-input-number>
+  <div>技伤</div>
+  <nz-input-number
+    [(ngModel)]="extra.skill"
+    [nzSize]="'small'"
+    [nzMin]="0"
+    [nzStep]="1"></nz-input-number>
+</div> -->
+
+<!-- <div class="desc">
+  <div class="desc-label">奥伤</div>
+  <nz-input-number
+    [(ngModel)]="extra.ub"
+    [nzSize]="'small'"
+    [nzMin]="0"
+    [nzStep]="1"></nz-input-number>
+  <div class="desc-label">暴击</div>
+  <nz-input-number
+    [(ngModel)]="extra.cri"
+    [nzSize]="'small'"
+    [nzMin]="0"
+    [nzStep]="1"></nz-input-number>
+  <div class="desc-label">爆伤</div>
+  <nz-input-number
+    [(ngModel)]="extra.criDamage"
+    [nzSize]="'small'"
+    [nzMin]="0"
+    [nzStep]="1"></nz-input-number>
+</div> -->
 <div class="g-flex">
   <div class="desc">
     <span class="desc-title">综合HP</span>
@@ -61,74 +96,39 @@
   </div>
 </div>
 
-<nz-table
-  [nzWidthConfig]="nzWidthConfig"
-  [nzBordered]="true"
-  nzSize="small"
-  [nzData]="[1]"
-  [nzShowPagination]="false">
-  <thead>
-    <tr>
-      <th>攻刃</th>
-      <th>生命值</th>
-      <th>DA</th>
-      <th>TA</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <td>{{ atk }}</td>
-      <td>{{ hp }}</td>
-      <td>{{ da }}</td>
-      <td>{{ ta }}</td>
-    </tr>
-  </tbody>
-</nz-table>
+<nz-tabset nzSize="small">
+  <nz-tab nzTitle="结果">
+    <app-result
+      [atk]="atk"
+      [hp]="hp"
+      [da]="da"
+      [ta]="ta"
+      [enmity]="enmity"
+      [critical]="critical"
+      [criticalDamage]="criticalDamage"
+      [skill]="skill"
+      [skillLimit]="skillLimit"
+      [ub]="ub"
+      [ubLimit]="ubLimit"
+      [stamina]="stamina"></app-result>
+  </nz-tab>
 
-<nz-table
-  [nzWidthConfig]="nzWidthConfig"
-  [nzBordered]="true"
-  nzSize="small"
-  [nzData]="[1]"
-  [nzShowPagination]="false">
-  <thead>
-    <tr>
-      <th>背水</th>
-      <th>浑身</th>
-      <th>暴击率</th>
-      <th>暴击伤害</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <td>{{ enmity }}</td>
-      <td>{{ stamina }}</td>
-      <td>{{ critical }}</td>
-      <td>{{ criticalDamage }}</td>
-    </tr>
-  </tbody>
-</nz-table>
+  <nz-tab nzTitle="伤害预测">
+    <app-attck
+      [atkDamage]="atkDamage"
+      [skillLimit]="skillLimit"
+      [ubLimit]="ubLimit"
+      [ub]="ub"
+      [skill]="skill"
+      [extra]="extra"></app-attck>
+  </nz-tab>
 
-<nz-table
-  [nzWidthConfig]="nzWidthConfig"
-  [nzBordered]="true"
-  nzSize="small"
-  [nzData]="[1]"
-  [nzShowPagination]="false">
-  <thead>
-    <tr>
-      <th>技伤</th>
-      <th>技伤上限</th>
-      <th>奥义</th>
-      <th>奥义上限</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <td>{{ skill }}</td>
-      <td>{{ skillLimit }}</td>
-      <td>{{ ub }}</td>
-      <td>{{ ubLimit }}</td>
-    </tr>
-  </tbody>
-</nz-table>
+  <nz-tab nzTitle="连击伤害期望">
+    <app-expect
+      [atkDamage]="atkDamage"
+      [ta]="ta"
+      [da]="da"
+      [critical]="critical"></app-expect>
+  </nz-tab>
+</nz-tabset>
+

@@ -6,6 +6,7 @@ export interface Section {
     ex: number
 }
 
+
 export interface PanelData {
     element: CoreElement,
     mainRobot: Robot,
@@ -26,4 +27,19 @@ export interface PanelData {
     skillDamage: Section,
     pureHp: number,
     pureAtk: number
+}
+
+
+export interface ExtraInfo {
+    atk: number,
+    attribute: number,
+    skill: number,
+    ub: number,
+    cri: number, // 暴击率
+    criDamageRadio: number, // 爆伤提升
+    atkBuff: number,
+    defense: number,
+    hp: number,
+    enmity: number,
+    stamina: number
 }

@@ -5,6 +5,9 @@
   &-title {
     width: 80px;
   }
+  // &-label {
+  //   width: 40px;
+  // }
 }
 
 .pure {
@@ -22,4 +25,7 @@
     text-shadow: 0 0 2px #150f0f, 0 0 2px #150f0f, 0 0 2px #150f0f, 0 0 4px #150f0f, 0 0 4px #150f0f,
       0 0 4px #150f0f;
   }
+}
+:host ::ng-deep > .ant-tabs-nav {
+  margin-bottom: 5px;
 }

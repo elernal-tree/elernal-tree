@@ -1,0 +1,28 @@
+
+  <nz-table [nzBordered]="true" nzSize="small" [nzData]="[1]" [nzShowPagination]="false">
+    <thead>
+      <tr>
+        <th></th>
+        <th>DA</th>
+        <th>TA</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>通常</td>
+        <td>{{ fixed(daDamage, 2) }}</td>
+        <td>{{ fixed(taDamage, 3) }}</td>
+      </tr>
+      <tr>
+        <td>有利</td>
+        <td>{{ fixed(daDamage * 1.25, 2) }}</td>
+        <td>{{ fixed(taDamage * 1.25, 3) }}</td>
+      </tr>
+      <tr>
+        <td>不利</td>
+        <td>{{ fixed(daDamage * 0.75, 2) }}</td>
+        <td>{{ fixed(taDamage * 0.75, 3) }}</td>
+      </tr>
+    </tbody>
+  </nz-table>
+  
