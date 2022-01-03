@@ -1,7 +1,7 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { ExtraInfo } from '../../model';
 import { atkLimit } from '../util';
-import { AtkRatio, DaTaRatio } from '@app/constants/constants';
+import { AtkRatio, DaTaRatio, Limit } from '@app/constants/constants';
 import { AtkType } from '@src/app/constants/enum';
 
 // 伤害期望计算
@@ -24,15 +24,16 @@ export class ExpectComponent {
   @Input() critical: number;
   constructor() {}
 
-  fixed(num: number, type: AtkType) {
-    return atkLimit(num, type).toFixed(0);
+  fixed(num: number) {
+    return atkLimit(num, AtkType.ta).toFixed(0);
   }
-  // 1倍
-  get taDamage() {
-    return this.atkDamage * DaTaRatio.ta * this.ta + this.atkDamage;
-  }
-  // 0.5
-  get daDamage() {
-    return this.atkDamage * DaTaRatio.ta * (1 - this.ta) * this.da + this.atkDamage;
+
+  get damage() {
+    return (
+      (DaTaRatio.ta * this.ta +
+        DaTaRatio.da * (1 - this.ta) * this.da +
+        (1 - this.ta) * (1 - this.da)) *
+      this.atkDamage
+    );
   }
 }
