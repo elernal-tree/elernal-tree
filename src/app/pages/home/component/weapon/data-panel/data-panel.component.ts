@@ -174,7 +174,7 @@ export class DataPanelComponent {
     if (this.extra.hp >= 80) {
       return 0;
     }
-    const hp = this.extra.hp / 100;
+    const hp = (1 - this.extra.hp / 100);
     return (1 + 2 * hp) * hp;
   }
 
