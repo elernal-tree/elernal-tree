@@ -17,6 +17,11 @@ export class AttckComponent {
   @Input() skill: number;
   @Input() criticalDamageRatio: number;
 
+  // 用于计算伤害的技能倍率
+  skillRatio = 200;
+  // 用于计算伤害的奥义倍率
+  ubRatio = 300;
+
   constructor() {}
 
   fixed(num: number) {
@@ -57,7 +62,7 @@ export class AttckComponent {
   }
 
   _sklDamage() {
-    const damage = this.atkDamage * 2 * (1 + this.skill);
+    const damage = this.atkDamage * this.skillRatio / 100 * (1 + this.skill);
     return this.sklDamageByLimit(damage);
   }
   get sklDmage() {
@@ -76,7 +81,7 @@ export class AttckComponent {
     return damage >= limit ? limit : damage;
   }
   _ubDamage() {
-    const damage = this.atkDamage * 3 * (1 + this.ub);
+    const damage = this.atkDamage * this.ubRatio / 100 * (1 + this.ub);
     return this.ubDamageByLimit(damage);
   }
 

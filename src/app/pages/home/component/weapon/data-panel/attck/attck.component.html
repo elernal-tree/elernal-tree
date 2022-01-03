@@ -1,5 +1,20 @@
-<div style="padding: 5px 0">
-  计算场景：由于浑身公式暂不明确，使用的回响面板数值。技能伤害为200%，奥义为300%
+<div >计算场景：由于浑身公式暂不明确，使用的回响面板数值。</div>
+
+<div class="g-flex" style="padding: 5px 0">
+  <div class="desc-title">技能倍率(%)</div>
+  <nz-input-number
+    style="width: 80px"
+    [(ngModel)]="skillRatio"
+    [nzSize]="'small'"
+    [nzMin]="0"
+    [nzStep]="1"></nz-input-number>
+  <div class="desc-title">奥义倍率(%)</div>
+  <nz-input-number
+    style="width: 80px"
+    [(ngModel)]="ubRatio"
+    [nzSize]="'small'"
+    [nzMin]="0"
+    [nzStep]="1"></nz-input-number>
 </div>
 
 <nz-table [nzBordered]="true" nzSize="small" [nzData]="[1]" [nzShowPagination]="false">
