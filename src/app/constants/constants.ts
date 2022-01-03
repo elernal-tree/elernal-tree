@@ -56,8 +56,8 @@ export const Limit = {
   hp: -0.7,
   // 综合hp下限
   totalHp: -9.99999,
-  // 单独区间连击概率上限
-  successionChance: 7.5,
+  // 连击概率上限
+  successionChance: 0.75,
   /** 单独UB上限 */
   ubBonus: 0.5,
   sklBonus: 0.5,
