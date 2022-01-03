@@ -48,6 +48,8 @@ export class DataPanelComponent {
     weaponStamina: 0,
     sklEnmity: 0,
     sklStamina: 0,
+    da: 0,
+    ta: 0,
   };
 
   constructor() {}
@@ -146,8 +148,10 @@ export class DataPanelComponent {
    * 盘子上限 75 不包含职武
    */
   get da() {
-    const coreDa = this.magunaDa + this.normalDa + this.exDa;
-    return coreDa >= Limit.successionChance ? Limit.successionChance : coreDa;
+    let coreDa = this.magunaDa + this.normalDa + this.exDa;
+    coreDa = coreDa >= Limit.successionChance ? Limit.successionChance : coreDa;
+    const da = coreDa + this.extra.da / 100;
+    return da >= 1 ? 1 : da;
   }
 
   get magunaTa() {
@@ -164,8 +168,10 @@ export class DataPanelComponent {
    * 盘子上限 75 不包含职武
    */
   get ta() {
-    const coreTa = this.magunaTa + this.normalTa + this.exTa;
-    return coreTa >= Limit.successionChance ? Limit.successionChance : coreTa;
+    let coreTa = this.magunaTa + this.normalTa + this.exTa;
+    coreTa = coreTa >= Limit.successionChance ? Limit.successionChance : coreTa;
+    const ta = coreTa + this.extra.ta / 100;
+    return ta >= 1 ? 1 : ta;
   }
   /**
    * 根据背水曲线公式计算当前hp的背水攻刃加成 80%hp以上为0
@@ -174,7 +180,7 @@ export class DataPanelComponent {
     if (this.extra.hp >= 80) {
       return 0;
     }
-    const hp = (1 - this.extra.hp / 100);
+    const hp = 1 - this.extra.hp / 100;
     return (1 + 2 * hp) * hp;
   }
 

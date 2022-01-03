@@ -20,6 +20,7 @@ export class ResultComponent  {
   @Input() skillLimit: number;
   @Input() ub: number;
   @Input() ubLimit: number;
+  // @Input
   
   constructor() { }
 

@@ -76,6 +76,22 @@
 </div>
 
 <div class="g-flex-between">
+  <div class="desc-label">DA(%)</div>
+  <nz-input-number
+    [(ngModel)]="extra.da"
+    [nzSize]="'small'"
+    [nzMin]="0"
+    [nzStep]="1"></nz-input-number>
+  <div class="desc-label">TA(%)</div>
+  <nz-input-number
+    [(ngModel)]="extra.ta"
+    [nzSize]="'small'"
+    [nzMin]="0"
+    [nzStep]="1"></nz-input-number>
+</div>
+
+
+<div class="g-flex-between">
   <div class="desc-label">武器背水(%)</div>
   <nz-input-number
     [(ngModel)]="extra.weaponEnmity"

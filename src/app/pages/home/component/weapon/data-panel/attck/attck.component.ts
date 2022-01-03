@@ -45,9 +45,7 @@ export class AttckComponent {
   }
 
   get criUpDamage() {
-    return this.fixed(
-      this.atkDamage * AtkRatio.up * (CriRatio.up + this.criticalDamageRatio)
-    );
+    return this.fixed(this.atkDamage * AtkRatio.up * (CriRatio.up + this.criticalDamageRatio));
   }
 
   get criDownDamage() {
@@ -62,7 +60,7 @@ export class AttckComponent {
   }
 
   _sklDamage() {
-    const damage = this.atkDamage * this.skillRatio / 100 * (1 + this.skill);
+    const damage = ((this.atkDamage * this.skillRatio) / 100) * (1 + this.skill);
     return this.sklDamageByLimit(damage);
   }
   get sklDmage() {
@@ -81,7 +79,7 @@ export class AttckComponent {
     return damage >= limit ? limit : damage;
   }
   _ubDamage() {
-    const damage = this.atkDamage * this.ubRatio / 100 * (1 + this.ub);
+    const damage = ((this.atkDamage * this.ubRatio) / 100) * (1 + this.ub);
     return this.ubDamageByLimit(damage);
   }
 
