@@ -42,7 +42,7 @@ export const AtkRatio = {
 
 export const DaTaRatio  = {
   da : 0.5,
-  ta: 0.5
+  ta: 1
 }
 
 export const Limit = {
