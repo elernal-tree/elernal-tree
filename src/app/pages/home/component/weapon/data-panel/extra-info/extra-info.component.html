@@ -30,13 +30,13 @@
 </div>
 
 <div class="desc g-flex-between" >
-  <div>攻刃(%)</div>
+  <div class="desc-label">攻刃(%)</div>
   <nz-input-number
     [(ngModel)]="extra.atkBuff"
     [nzSize]="'small'"
     [nzMin]="0"
     [nzStep]="1"></nz-input-number>
-  <div>属攻(%)</div>
+  <div class="desc-label">属攻(%)</div>
   <nz-input-number
     [(ngModel)]="extra.attribute"
     [nzSize]="'small'"
@@ -45,7 +45,7 @@
 </div>
 
 <div class="desc g-flex-between">
-  <div>技伤(%)</div>
+  <div class="desc-label">技伤(%)</div>
   <nz-input-number
     [(ngModel)]="extra.skill"
     [nzSize]="'small'"
