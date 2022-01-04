@@ -4,7 +4,8 @@
 
 export const environment = {
   production: false,
-  ImgUrl:"/assets/core/{id}.png"
+  // ImgUrl:"/assets/core/{id}.png"
+  ImgUrl:"https://gitee.com/shanzhaikabi/elernal-tree/raw/master/core/{id}.png"
 };
 
 /*

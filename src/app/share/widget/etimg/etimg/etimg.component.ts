@@ -2,7 +2,6 @@ import { Component, OnInit, Input } from '@angular/core';
 import { Core, Skill } from '@src/app/model/core';
 import {environment } from '@src/environments/environment'
 
-// const ImgUrl = `https://cdn.jsdelivr.net/gh/elernal-tree/elernal-tree@master/static/image/core/{id}.png`;
 
 const Rarity = ['', 'R', 'SR', 'SSR'];
 
