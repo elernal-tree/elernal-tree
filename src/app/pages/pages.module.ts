@@ -19,6 +19,8 @@ import { ExpectComponent } from './home/component/weapon/data-panel/expect/expec
 import { SkillComponent } from './home/component/weapon/data-panel/skill/skill.component';
 import { UbComponent } from './home/component/weapon/data-panel/ub/ub.component';
 import { ExtraInfoComponent } from './home/component/weapon/data-panel/extra-info/extra-info.component';
+import { EnmityComponent } from './home/component/weapon/data-panel/result/enmity/enmity.component';
+import { StaminaComponent } from './home/component/weapon/data-panel/result/stamina/stamina.component';
 
 const icons: IconDefinition[] = [ PlusOutline ];
 
@@ -34,7 +36,9 @@ const icons: IconDefinition[] = [ PlusOutline ];
     ExpectComponent,
     SkillComponent,
     UbComponent,
-    ExtraInfoComponent
+    ExtraInfoComponent,
+    EnmityComponent,
+    StaminaComponent
   ],
   imports: [
     CommonModule,

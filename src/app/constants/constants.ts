@@ -32,6 +32,7 @@ export const CoreOption = Object.freeze([
 export const CriRatio = {
   up: 1.5,
   noraml: 1.25,
+  down: 1.25
 };
 
 export const AtkRatio = {

@@ -1,6 +1,6 @@
 {
   "/api": {
-    "target": "https://shushujsq.top",
+    "target": "http://127.0.0.1:5006",
     "secure": false
   }
 }

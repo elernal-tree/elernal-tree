@@ -1,0 +1,24 @@
+<nz-table
+  [nzBordered]="true"
+  nzSize="small"
+  [nzData]="[1]"
+  [nzShowPagination]="false">
+  <thead>
+    <tr>
+      <th>方阵</th>
+      <th>普刃</th>
+      <th>EX</th>
+      <th>武器</th>
+      <th>技能</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>{{fixed(magunaStamina)}}</td>
+      <td>{{fixed(normalStamina)}}</td>
+      <td>{{fixed(exStamina)}}</td>
+      <td>{{fixed(weaponStamina / 100)}}</td>
+      <td>{{fixed(sklStamina / 100)}}</td>
+    </tr>
+  </tbody>
+</nz-table>

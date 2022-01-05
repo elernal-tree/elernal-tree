@@ -1,0 +1,24 @@
+<nz-table
+  [nzBordered]="true"
+  nzSize="small"
+  [nzData]="[1]"
+  [nzShowPagination]="false">
+  <thead>
+    <tr>
+      <th>方阵</th>
+      <th>普刃</th>
+      <th>EX</th>
+      <th>武器</th>
+      <th>技能</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>{{fixed(magunaEnmity)}}</td>
+      <td>{{fixed(normalEnmity)}}</td>
+      <td>{{fixed(exEnmity)}}</td>
+      <td>{{fixed(weaponEnmity / 100)}}</td>
+      <td>{{fixed(sklEnmity / 100)}}</td>
+    </tr>
+  </tbody>
+</nz-table>
