@@ -1,8 +1,8 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { ExtraInfo } from '../../model';
-import { atkLimit } from '../util';
-import { AtkRatio, DaTaRatio, Limit } from '@app/constants/constants';
+import { AtkRatio, CriRatio, DaTaRatio, Limit } from '@app/constants/constants';
 import { AtkType } from '@src/app/constants/enum';
+import { ShushuService } from '@app/core/service/shushu.service'
 
 // 伤害期望计算
 // 100x1x0.1
@@ -22,10 +22,13 @@ export class ExpectComponent {
   @Input() da: number;
   @Input() ta: number;
   @Input() critical: number;
-  constructor() {}
+  @Input() criticalDamageRatio: number;
+  constructor(
+    private shushuSrc: ShushuService
+  ) {}
 
   fixed(num: number) {
-    return atkLimit(num, AtkType.ta).toFixed(0);
+    return this.shushuSrc.atkLimit(num, AtkType.ta).toFixed(0);
   }
 
   get damage() {
@@ -35,5 +38,19 @@ export class ExpectComponent {
         (1 - this.ta) * (1 - this.da)) *
       this.atkDamage
     );
+  }
+
+
+
+  get criDamage() {
+    return this.damage * (1 + this.critical * (CriRatio.noraml + this.criticalDamageRatio));
+  }
+
+  get criUpDamage() {
+    return this.damage * (1 + this.critical * (CriRatio.up + this.criticalDamageRatio));
+  }
+
+  get criDownDamage() {
+    return this.damage * (1 + this.critical * (CriRatio.down + this.criticalDamageRatio));
   }
 }

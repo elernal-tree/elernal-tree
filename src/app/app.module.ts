@@ -10,6 +10,7 @@ import { FormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { NzIconModule } from 'ng-zorro-antd/icon';
+import { CoreModule } from '@app/core/core.module'
 
 import { ShareModule } from './share';
 import { LayoutModule } from './layout/layout.module';
@@ -31,7 +32,7 @@ registerLocaleData(zh);
     BrowserAnimationsModule,
     ShareModule,
     LayoutModule,
-    
+    CoreModule
   ],
   providers: [{ provide: NZ_I18N, useValue: zh_CN }],
   bootstrap: [AppComponent]

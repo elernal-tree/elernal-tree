@@ -1,71 +1,98 @@
 <nz-table
-[nzWidthConfig]="nzWidthConfig"
-[nzBordered]="true"
-nzSize="small"
-[nzData]="[1]"
-[nzShowPagination]="false">
-<thead>
-  <tr>
-    <th>攻刃</th>
-    <th>生命值</th>
-    <th>DA</th>
-    <th>TA</th>
-  </tr>
-</thead>
-<tbody>
-  <tr>
-    <td>{{ fixed(atk) }}</td>
-    <td>{{ fixed(hp) }}</td>
-    <td>{{ fixed(da) }}</td>
-    <td>{{ fixed(ta) }}</td>
-  </tr>
-</tbody>
+  [nzWidthConfig]="nzWidthConfig"
+  [nzBordered]="true"
+  nzSize="small"
+  [nzData]="[1]"
+  [nzShowPagination]="false">
+  <thead>
+    <tr>
+      <th>攻刃</th>
+      <th>生命值</th>
+      <th>DA</th>
+      <th>TA</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>{{ fixed(atkBonus) }}</td>
+      <td>{{ fixed(hpBonus) }}</td>
+      <td>{{ fixed(da) }}</td>
+      <td>{{ fixed(ta) }}</td>
+    </tr>
+  </tbody>
 </nz-table>
 
 <nz-table
-[nzWidthConfig]="nzWidthConfig"
-[nzBordered]="true"
-nzSize="small"
-[nzData]="[1]"
-[nzShowPagination]="false">
-<thead>
-  <tr>
-    <th>背水</th>
-    <th>浑身</th>
-    <th>暴击率</th>
-    <th>暴击伤害</th>
-  </tr>
-</thead>
-<tbody>
-  <tr>
-    <td>{{ fixed(enmity) }}</td>
-    <td>{{ fixed(stamina) }}</td>
-    <td>{{ fixed(critical) }}</td>
-    <td>{{ fixed(criticalDamageRatio) }}</td>
-  </tr>
-</tbody>
+  [nzWidthConfig]="nzWidthConfig"
+  [nzBordered]="true"
+  nzSize="small"
+  [nzData]="[1]"
+  [nzShowPagination]="false">
+  <thead>
+    <tr>
+      <th
+        nz-popover
+        nzPopoverTitle="均为当前血量的背水加成(50%血量刚好为面板值)"
+        [nzPopoverContent]="enmityemplate">
+        背水 <i nz-icon nzType="question-circle" nzTheme="outline"></i>
+
+        <ng-template #enmityemplate>
+          <app-enmity
+            [magunaEnmity]="magunaEnmity"
+            [normalEnmity]="normalEnmity"
+            [weaponEnmity]="weaponEnmity"
+            [sklEnmity]="sklEnmity"
+            [exEnmity]="exEnmity"></app-enmity>
+        </ng-template>
+      </th>
+      <th
+        nz-popover
+        nzPopoverTitle="均为当前血量的浑身加成(暂不明确曲线公式，25%以上均取面板值计算)"
+        [nzPopoverContent]="staminaTemplate">
+        浑身 <i nz-icon nzType="question-circle" nzTheme="outline"></i>
+        <ng-template #staminaTemplate>
+          <app-stamina
+            [normalStamina]="normalStamina"
+            [exStamina]="exStamina"
+            [weaponStamina]="weaponStamina"
+            [sklStamina]="sklStamina"
+            [magunaStamina]="magunaStamina"></app-stamina>
+        </ng-template>
+      </th>
+      <th>暴击率</th>
+      <th>暴击伤害</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>{{ fixed(enmity) }}</td>
+      <td>{{ fixed(stamina) }}</td>
+      <td>{{ fixed(critical) }}</td>
+      <td>{{ fixed(criticalDamageRatio) }}</td>
+    </tr>
+  </tbody>
 </nz-table>
 
 <nz-table
-[nzWidthConfig]="nzWidthConfig"
-[nzBordered]="true"
-nzSize="small"
-[nzData]="[1]"
-[nzShowPagination]="false">
-<thead>
-  <tr>
-    <th>技伤</th>
-    <th>技伤上限</th>
-    <th>奥义</th>
-    <th>奥义上限</th>
-  </tr>
-</thead>
-<tbody>
-  <tr>
-    <td>{{ fixed(skill) }}</td>
-    <td>{{ fixed(skillLimit) }}</td>
-    <td>{{ fixed(ub) }}</td>
-    <td>{{ fixed(ubLimit) }}</td>
-  </tr>
-</tbody>
+  [nzWidthConfig]="nzWidthConfig"
+  [nzBordered]="true"
+  nzSize="small"
+  [nzData]="[1]"
+  [nzShowPagination]="false">
+  <thead>
+    <tr>
+      <th>技伤</th>
+      <th>技伤上限</th>
+      <th>奥义</th>
+      <th>奥义上限</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>{{ fixed(skill) }}</td>
+      <td>{{ fixed(skillLimit) }}</td>
+      <td>{{ fixed(ub) }}</td>
+      <td>{{ fixed(ubLimit) }}</td>
+    </tr>
+  </tbody>
 </nz-table>

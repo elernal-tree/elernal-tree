@@ -2,6 +2,7 @@ import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { CoreOption, Limit } from '@src/app/constants/constants';
 import { Robot } from '@src/app/constants/enum';
 import { ExtraInfo, PanelData } from '../model';
+import { ShushuService } from '@app/core/service/shushu.service';
 
 const calcAtk = '1 + x * (100 + y) / 10000';
 const calcOther = 'x * (100 + y) / 10000';
@@ -52,7 +53,7 @@ export class DataPanelComponent {
     ta: 0,
   };
 
-  constructor() {}
+  constructor(private shushuSrv: ShushuService) {}
 
   // TODO 修改实现
   elementChange() {
@@ -107,7 +108,7 @@ export class DataPanelComponent {
     return this.calcAtkBonus(this.panelData.atk.ex, 0);
   }
 
-  get atk() {
+  get atkBonus() {
     return this.nagunaAtk * this.normalAtk * this.exAtk * this.attributeBonus - 1;
   }
   /**
@@ -128,7 +129,7 @@ export class DataPanelComponent {
   /**
    * 综合上限 -99.99%~
    */
-  get hp() {
+  get hpBonus() {
     const hp = this.magunaHp + this.normalHp + this.exHp;
     return hp <= Limit.totalHp ? Limit.totalHp : hp;
   }
@@ -177,11 +178,11 @@ export class DataPanelComponent {
    * 根据背水曲线公式计算当前hp的背水攻刃加成 80%hp以上为0
    */
   get enmityByHp() {
-    if (this.extra.hp >= 80) {
-      return 0;
-    }
-    const hp = 1 - this.extra.hp / 100;
-    return (1 + 2 * hp) * hp;
+    return this.shushuSrv.enmityByHp(this.extra.hp);
+  }
+
+  get staminaByHp() {
+    return this.shushuSrv.staminaByHp(this.extra.hp);
   }
 
   get magunaEnmity() {
@@ -300,6 +301,7 @@ export class DataPanelComponent {
   get exCri() {
     return this.calcOtherBonus(this.panelData.critical.ex, 0);
   }
+  /** 暴击率 */
   get critical() {
     return this.magunaCri + this.normalCri + this.exCri + this.extra.cri / 100;
   }
@@ -326,12 +328,12 @@ export class DataPanelComponent {
   get atkDamage() {
     return (
       ((this.panelData.pureAtk + this.extra.atk) *
-        (1 + this.atk) *
+        (1 + this.atkBonus) *
         (1 + this.extra.atkBuff / 100) *
         (1 + (this.enmity + this.extra.weaponEnmity / 100) * this.enmityByHp) *
-        (1 + (this.stamina + this.extra.weaponStamina / 100)) *
+        (1 + (this.stamina + this.extra.weaponStamina / 100) * this.staminaByHp) *
         (1 + (this.extra.sklEnmity / 100) * this.enmityByHp) *
-        (1 + this.extra.sklStamina / 100)) /
+        (1 + this.extra.sklStamina / 100 * this.staminaByHp)) /
       this.extra.defense
     );
   }

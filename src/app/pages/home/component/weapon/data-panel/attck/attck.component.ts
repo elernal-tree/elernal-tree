@@ -1,7 +1,7 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { ExtraInfo } from '../../model';
-import { atkLimit } from '../util';
 import { AtkRatio, CriRatio, Limit } from '@src/app/constants/constants';
+import { ShushuService } from '@app/core/service/shushu.service'
 
 @Component({
   selector: 'app-attck',
@@ -22,10 +22,12 @@ export class AttckComponent {
   // 用于计算伤害的奥义倍率
   ubRatio = 300;
 
-  constructor() {}
+  constructor(
+    private shushuSrc: ShushuService
+  ) {}
 
   fixed(num: number) {
-    return atkLimit(num, 1).toFixed(0);
+    return this.shushuSrc.atkLimit(num, 1).toFixed(0);
   }
 
   get damage() {
@@ -50,7 +52,7 @@ export class AttckComponent {
 
   get criDownDamage() {
     return this.fixed(
-      this.atkDamage * AtkRatio.down * (CriRatio.noraml + this.criticalDamageRatio)
+      this.atkDamage * AtkRatio.down * (CriRatio.down + this.criticalDamageRatio)
     );
   }
 
