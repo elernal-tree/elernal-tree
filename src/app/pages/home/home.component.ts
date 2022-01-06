@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Core } from '@src/app/model/core';
 import { WeaponItem } from '@src/app/model/weapon';
+import { RouteKeep } from '@app/core/router-config/route-keep'
 
 
 
@@ -9,14 +10,11 @@ import { WeaponItem } from '@src/app/model/weapon';
   templateUrl: './home.component.html',
   styleUrls: ['./home.component.scss']
 })
-export class HomeComponent implements OnInit {
+export class HomeComponent implements RouteKeep {
 
  
   constructor() { }
+  NG_ROUTE_KEEP: boolean = true;
 
-  ngOnInit(): void {
-    // / 
-    // console.log(this.weaponList)
-  }
 
 }

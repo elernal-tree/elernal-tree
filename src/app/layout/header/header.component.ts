@@ -1,6 +1,5 @@
 import { Component, OnInit, TemplateRef, ViewChild } from '@angular/core';
 import { Router } from '@angular/router';
-import { NzModalService} from 'ng-zorro-antd/modal';
 
 
 @Component({
@@ -12,11 +11,12 @@ export class HeaderComponent  {
 
   constructor(
     private router: Router,
-    private nzModalSrc: NzModalService,
   ) {}
 
 
-
+  about() {
+    this.router.navigate(['/about'])
+  }
 
 
 }

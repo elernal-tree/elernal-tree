@@ -38,11 +38,11 @@
 
         <ng-template #enmityemplate>
           <app-enmity
-            [magunaEnmity]="magunaEnmity"
-            [normalEnmity]="normalEnmity"
-            [weaponEnmity]="weaponEnmity"
-            [sklEnmity]="sklEnmity"
-            [exEnmity]="exEnmity"></app-enmity>
+            [magunaEnmity]="magunaEnmity * enmityByHp"
+            [normalEnmity]="normalEnmity * enmityByHp"
+            [weaponEnmity]="weaponEnmity * enmityByHp"
+            [sklEnmity]="sklEnmity * enmityByHp"
+            [exEnmity]="exEnmity * enmityByHp"></app-enmity>
         </ng-template>
       </th>
       <th
@@ -52,11 +52,11 @@
         浑身 <i nz-icon nzType="question-circle" nzTheme="outline"></i>
         <ng-template #staminaTemplate>
           <app-stamina
-            [normalStamina]="normalStamina"
-            [exStamina]="exStamina"
-            [weaponStamina]="weaponStamina"
-            [sklStamina]="sklStamina"
-            [magunaStamina]="magunaStamina"></app-stamina>
+            [normalStamina]="normalStamina * staminaByHp"
+            [exStamina]="exStamina * staminaByHp"
+            [weaponStamina]="weaponStamina * staminaByHp"
+            [sklStamina]="sklStamina * staminaByHp"
+            [magunaStamina]="magunaStamina * staminaByHp"></app-stamina>
         </ng-template>
       </th>
       <th>暴击率</th>

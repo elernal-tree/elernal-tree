@@ -21,6 +21,7 @@ import { UbComponent } from './home/component/weapon/data-panel/ub/ub.component'
 import { ExtraInfoComponent } from './home/component/weapon/data-panel/extra-info/extra-info.component';
 import { EnmityComponent } from './home/component/weapon/data-panel/result/enmity/enmity.component';
 import { StaminaComponent } from './home/component/weapon/data-panel/result/stamina/stamina.component';
+import { AboutComponent } from './about/about.component';
 
 const icons: IconDefinition[] = [ PlusOutline ];
 
@@ -38,7 +39,8 @@ const icons: IconDefinition[] = [ PlusOutline ];
     UbComponent,
     ExtraInfoComponent,
     EnmityComponent,
-    StaminaComponent
+    StaminaComponent,
+    AboutComponent
   ],
   imports: [
     CommonModule,
