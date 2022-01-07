@@ -23,8 +23,9 @@ export class ShushuService {
 
   /**
    * 根据背水曲线公式计算当前hp的背水攻刃加成 80%hp以上为0
+   * factor 为当前剩余血量百分比
    */
-  enmityByHp(hp: number) {
+  enmityWithHp(hp: number) {
     if (hp >= 80) {
       return 0;
     }
@@ -34,9 +35,10 @@ export class ShushuService {
 
   /**
    * 根据浑身公式计算当前hp的浑身加成 25%以下为0
-   * 浑身公式暂不明确
+   * 浑身公式暂不明确 从容效果 = ( 2.1 + ( r /从容系数 ) ^ 2.9 ) / 100
+   * r 为当前血量百分比
    */
-  staminaByHp(hp: number) {
+  staminaWithHp(hp: number) {
     if (hp <= 25) {
       return 0;
     }

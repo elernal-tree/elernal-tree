@@ -1,17 +1,28 @@
-<div>
-    此处填写的为武器加成，或者加上生效的角色buff加成
-</div>
-
+<div>此处填写的为武器加成，或者加上生效的角色buff加成</div>
 
 <div class="g-flex-between">
-  <div class="desc-title">主角攻击力</div>
+  <div class="desc-label">人物攻击力</div>
   <nz-input-number
-    style="width: 80px"
     [(ngModel)]="extra.atk"
     [nzSize]="'small'"
     [nzMin]="0"
     [nzStep]="1"></nz-input-number>
-    <div class="desc-title">敌人防御力</div>
+  <div class="desc-label">HP白值</div>
+  <nz-input-number
+    [(ngModel)]="extra.hp"
+    [nzSize]="'small'"
+    [nzMin]="1"
+    [nzStep]="1"></nz-input-number>
+</div>
+
+<div class="g-flex-between">
+  <div class="desc-label">当前hp(%)</div>
+  <nz-input-number
+    [(ngModel)]="extra.hpPercent"
+    [nzSize]="'small'"
+    [nzMin]="0"
+    [nzStep]="1"></nz-input-number>
+  <div class="desc-label">敌人防御力</div>
   <nz-input-number
     [(ngModel)]="extra.defense"
     [nzSize]="'small'"
@@ -19,17 +30,7 @@
     [nzStep]="1"></nz-input-number>
 </div>
 
-<div class="g-flex-between">
-  <div class="desc-title">当前主角hp(%)</div>
-  <nz-input-number
-    [(ngModel)]="extra.hp"
-    [nzSize]="'small'"
-    [nzMin]="0"
-    [nzStep]="1"></nz-input-number>
-
-</div>
-
-<div class="desc g-flex-between" >
+<div class="desc g-flex-between">
   <div class="desc-label">攻刃(%)</div>
   <nz-input-number
     [(ngModel)]="extra.atkBuff"
@@ -57,7 +58,6 @@
     [nzSize]="'small'"
     [nzMin]="0"
     [nzStep]="1"></nz-input-number>
-
 </div>
 
 <div class="g-flex-between">
@@ -89,7 +89,6 @@
     [nzMin]="0"
     [nzStep]="1"></nz-input-number>
 </div>
-
 
 <div class="g-flex-between">
   <div class="desc-label">武器背水(%)</div>

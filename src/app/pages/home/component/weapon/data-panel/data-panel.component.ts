@@ -36,6 +36,7 @@ export class DataPanelComponent {
 
   extra: ExtraInfo = {
     atk: 0,
+    hp: 0,
     attribute: 0,
     skill: 0,
     ub: 0,
@@ -44,7 +45,7 @@ export class DataPanelComponent {
     atkBuff: 20,
     defense: 10,
     /** 当前hp百分比 */
-    hp: 50,
+    hpPercent: 50,
     weaponEnmity: 0,
     weaponStamina: 0,
     sklEnmity: 0,
@@ -177,12 +178,12 @@ export class DataPanelComponent {
   /**
    * 根据背水曲线公式计算当前hp的背水攻刃加成 80%hp以上为0
    */
-  get enmityByHp() {
-    return this.shushuSrv.enmityByHp(this.extra.hp);
+  get enmityWithHp() {
+    return this.shushuSrv.enmityWithHp(this.extra.hpPercent);
   }
 
-  get staminaByHp() {
-    return this.shushuSrv.staminaByHp(this.extra.hp);
+  get staminaWithHp() {
+    return this.shushuSrv.staminaWithHp(this.extra.hpPercent);
   }
 
   get magunaEnmity() {
@@ -330,11 +331,15 @@ export class DataPanelComponent {
       ((this.panelData.pureAtk + this.extra.atk) *
         (1 + this.atkBonus) *
         (1 + this.extra.atkBuff / 100) *
-        (1 + (this.enmity + this.extra.weaponEnmity / 100) * this.enmityByHp) *
-        (1 + (this.stamina + this.extra.weaponStamina / 100) * this.staminaByHp) *
-        (1 + (this.extra.sklEnmity / 100) * this.enmityByHp) *
-        (1 + this.extra.sklStamina / 100 * this.staminaByHp)) /
+        (1 + (this.enmity + this.extra.weaponEnmity / 100) * this.enmityWithHp) *
+        (1 + (this.stamina + this.extra.weaponStamina / 100) * this.staminaWithHp) *
+        (1 + (this.extra.sklEnmity / 100) * this.enmityWithHp) *
+        (1 + this.extra.sklStamina / 100 * this.staminaWithHp)) /
       this.extra.defense
     );
+  }
+  // HP白值
+  get pureHp() {
+    return this.panelData.pureHp + this.extra.hp
   }
 }
