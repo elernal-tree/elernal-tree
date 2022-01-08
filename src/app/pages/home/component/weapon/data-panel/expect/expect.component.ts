@@ -43,14 +43,14 @@ export class ExpectComponent {
 
 
   get criDamage() {
-    return this.damage * (1 + this.critical * (CriRatio.noraml + this.criticalDamageRatio));
+    return this.damage * (1 + this.critical * (CriRatio.noraml + this.criticalDamageRatio - 1));
   }
 
   get criUpDamage() {
-    return this.damage * (1 + this.critical * (CriRatio.up + this.criticalDamageRatio));
+    return this.damage * (1 + this.critical * (CriRatio.up + this.criticalDamageRatio - 1));
   }
 
   get criDownDamage() {
-    return this.damage * (1 + this.critical * (CriRatio.down + this.criticalDamageRatio));
+    return this.damage * (1 + this.critical * (CriRatio.down + this.criticalDamageRatio - 1));
   }
 }
