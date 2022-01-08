@@ -31,8 +31,10 @@ export interface PanelData {
 }
 
 export interface ExtraInfo {
-  /** 攻击力 */
+  /** 攻击力白值 */
   atk: number;
+  /** hp 白值 */
+  hp: number;
   /** 属攻 */
   attribute: number;
   /** 技能攻刃 */
@@ -41,12 +43,12 @@ export interface ExtraInfo {
   ub: number;
   cri: number; // 暴击率
   criDamageRadio: number; // 爆伤提升
-  /** 攻刃 */
+  /** 攻刃% */
   atkBuff: number;
-  /** 地方防御力 */
+  /** 敌方防御力 */
   defense: number;
   /** 当前hp */
-  hp: number;
+  hpPercent: number;
   weaponEnmity: number;
   weaponStamina: number;
   sklStamina: number;

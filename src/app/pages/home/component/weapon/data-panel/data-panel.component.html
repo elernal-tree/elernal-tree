@@ -47,11 +47,11 @@
 
 <div class="g-flex">
   <div class="desc">
-    <span class="desc-title">综合HP</span>
+    <span class="desc-title">回响HP</span>
     <span class="desc-title pure-hp">{{ panelData.pureHp }}</span>
   </div>
   <div class="desc">
-    <span class="desc-title">综合攻击力</span>
+    <span class="desc-title">回响攻击力</span>
     <span class="desc-title pure-atk">{{ panelData.pureAtk }}</span>
   </div>
 </div>
@@ -64,7 +64,7 @@
     <app-result
       [atkBonus]="atkBonus"
       [hpBonus]="hpBonus"
-      [hp]="extra.hp"
+      [hpPercent]="extra.hpPercent"
       [da]="da"
       [ta]="ta"
       [critical]="critical"
@@ -83,6 +83,7 @@
       [exStamina]="exStamina"
       [weaponStamina]="extra.weaponStamina"
       [sklStamina]="extra.sklStamina"
+      [pureHp]="pureHp"
       ></app-result>
   </nz-tab>
 

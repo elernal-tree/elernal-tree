@@ -11,11 +11,10 @@ export class ResultComponent {
 
   @Input() atkBonus: number;
   @Input() hpBonus: number;
-  @Input() hp: number;
+  @Input() hpPercent: number;
   @Input() da: number;
   @Input() ta: number;
-  // @Input() enmity: number;
-  // @Input() stamina: number;
+  @Input() pureHp: number;
   @Input() critical: number;
   @Input() criticalDamageRatio: number;
   @Input() skill: number;
@@ -39,33 +38,37 @@ export class ResultComponent {
     return (num * 100).toFixed(2);
   }
 
-  get enmityByHp() {
-    return this.shushuSrv.enmityByHp(this.hp);
+  get enmityWithHp() {
+    return this.shushuSrv.enmityWithHp(this.hpPercent);
   }
 
-  get staminaByHp() {
-    return this.shushuSrv.staminaByHp(this.hp);
+  get staminaWithHp() {
+    return this.shushuSrv.staminaWithHp(this.hpPercent);
   }
 
   get coreEnmity() {
     return (
       (this.magunaEnmity + this.normalEnmity + this.exEnmity + this.weaponEnmity / 100) *
-      this.enmityByHp
+      this.enmityWithHp
     );
   }
 
   get enmity() {
-    return (1 + this.coreEnmity) * (1 + (this.sklEnmity / 100) * this.enmityByHp) - 1;
+    return (1 + this.coreEnmity) * (1 + (this.sklEnmity / 100) * this.enmityWithHp) - 1;
   }
 
   get coreStamina() {
     return (
       (this.magunaStamina + this.normalStamina + this.exStamina + this.weaponStamina / 100) *
-      this.staminaByHp
+      this.staminaWithHp
     );
   }
 
   get stamina() {
-    return (1 + this.coreStamina) * (1 + (this.sklStamina / 100) * this.staminaByHp) - 1;
+    return (1 + this.coreStamina) * (1 + (this.sklStamina / 100) * this.staminaWithHp) - 1;
+  }
+
+  get hp() {
+    return (this.pureHp * ( 1 + this.hpBonus)).toFixed(0);
   }
 }

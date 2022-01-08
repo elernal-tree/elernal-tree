@@ -7,7 +7,12 @@
   <thead>
     <tr>
       <th>攻刃</th>
-      <th>生命值</th>
+      <th
+        nz-popover
+        nzPopoverTitle="加成后生命值"
+        [nzPopoverContent]="hp">
+        生命值 <i nz-icon nzType="question-circle" nzTheme="outline"></i>
+      </th>
       <th>DA</th>
       <th>TA</th>
     </tr>
@@ -38,11 +43,11 @@
 
         <ng-template #enmityemplate>
           <app-enmity
-            [magunaEnmity]="magunaEnmity"
-            [normalEnmity]="normalEnmity"
-            [weaponEnmity]="weaponEnmity"
-            [sklEnmity]="sklEnmity"
-            [exEnmity]="exEnmity"></app-enmity>
+            [magunaEnmity]="magunaEnmity * enmityWithHp"
+            [normalEnmity]="normalEnmity * enmityWithHp"
+            [weaponEnmity]="weaponEnmity * enmityWithHp"
+            [sklEnmity]="sklEnmity * enmityWithHp"
+            [exEnmity]="exEnmity * enmityWithHp"></app-enmity>
         </ng-template>
       </th>
       <th
@@ -52,11 +57,11 @@
         浑身 <i nz-icon nzType="question-circle" nzTheme="outline"></i>
         <ng-template #staminaTemplate>
           <app-stamina
-            [normalStamina]="normalStamina"
-            [exStamina]="exStamina"
-            [weaponStamina]="weaponStamina"
-            [sklStamina]="sklStamina"
-            [magunaStamina]="magunaStamina"></app-stamina>
+            [normalStamina]="normalStamina * staminaWithHp"
+            [exStamina]="exStamina * staminaWithHp"
+            [weaponStamina]="weaponStamina * staminaWithHp"
+            [sklStamina]="sklStamina * staminaWithHp"
+            [magunaStamina]="magunaStamina * staminaWithHp"></app-stamina>
         </ng-template>
       </th>
       <th>暴击率</th>
