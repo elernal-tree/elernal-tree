@@ -61,6 +61,7 @@
         <app-weapon-item
           [weapon]="weaponList[6]"
           [index]="6"
+          (dataChange)="countResult()"
           (dragDroped)="dragDroped($event)"></app-weapon-item>
       </div>
       <div nz-col nzSpan="6">
