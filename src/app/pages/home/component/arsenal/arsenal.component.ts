@@ -19,7 +19,7 @@ export class ArsenalComponent implements OnInit {
   constructor(private _http: HttpClient) {}
 
   ngOnInit(): void {
-    this._http.get<Core[]>('/api/core').subscribe((r) => {
+    this._http.get<Core[]>('/assets/core.json').subscribe((r) => {
       this.coreList = r.filter((core) => !outCoreList.includes(core.id));
     });
   }

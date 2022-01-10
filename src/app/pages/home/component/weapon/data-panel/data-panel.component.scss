@@ -17,6 +17,7 @@
     line-height: 1;
     text-shadow: 0 0 2px #150f0f, 0 0 2px #150f0f, 0 0 2px #150f0f, 0 0 4px #150f0f, 0 0 4px #150f0f,
       0 0 4px #150f0f;
+    padding: 0 5px;
   }
   &-atk {
     color: #ff5d25;
@@ -24,6 +25,7 @@
     line-height: 1;
     text-shadow: 0 0 2px #150f0f, 0 0 2px #150f0f, 0 0 2px #150f0f, 0 0 4px #150f0f, 0 0 4px #150f0f,
       0 0 4px #150f0f;
+    padding: 0 5px;
   }
 }
 :host ::ng-deep > .ant-tabs-nav {

@@ -342,7 +342,7 @@ export class WeaponComponent {
       }
     }
   }
-  /** elemnt为0或者无，为全属性加成,列入格拉拉. */
+  /** elemnt为0或者无，为全属性加成,列如格拉拉. */
   canCountWithElement(element?: number) {
     return !element || this.panelData.element === element;
   }
