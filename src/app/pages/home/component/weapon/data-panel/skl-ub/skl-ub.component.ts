@@ -24,40 +24,38 @@ export class SklUbComponent {
     return damage >= limit ? limit : damage;
   }
 
-  _sklDamage() {
-    const damage = ((this.atkDamage * this.skillRatio) / 100) * (1 + this.skill);
-    return this.sklDamageByLimit(damage);
+  get _sklDamage() {
+    return ((this.atkDamage * this.skillRatio) / 100) * (1 + this.skill);
   }
   get sklDmage() {
-    return this._sklDamage().toFixed(0);
+    return this.sklDamageByLimit(this._sklDamage).toFixed(0);
   }
   get sklUpDamage() {
-    return this.sklDamageByLimit(this._sklDamage() * AtkRatio.up).toFixed(0);
+    return this.sklDamageByLimit(this._sklDamage * AtkRatio.up).toFixed(0);
   }
 
   get sklDownDamage() {
-    return this.sklDamageByLimit(this._sklDamage() * AtkRatio.down).toFixed(0);
+    return this.sklDamageByLimit(this._sklDamage * AtkRatio.down).toFixed(0);
   }
 
   ubDamageByLimit(damage: number) {
     const limit = Limit.ubDamage * (1 + this.ubLimit);
     return damage >= limit ? limit : damage;
   }
-  _ubDamage() {
-    const damage = ((this.atkDamage * this.ubRatio) / 100) * (1 + this.ub);
-    return this.ubDamageByLimit(damage);
+  get _ubDamage() {
+    return ((this.atkDamage * this.ubRatio) / 100) * (1 + this.ub);
   }
 
   get ubDamage() {
-    return this._ubDamage().toFixed(0);
+    return this.ubDamageByLimit(this._ubDamage).toFixed(0);
   }
 
   get ubUpDamage() {
-    return this.ubDamageByLimit(this._ubDamage() * AtkRatio.up).toFixed(0);
+    return this.ubDamageByLimit(this._ubDamage * AtkRatio.up).toFixed(0);
   }
 
   get ubDownDamage() {
-    return this.ubDamageByLimit(this._ubDamage() * AtkRatio.down).toFixed(0);
+    return this.ubDamageByLimit(this._ubDamage * AtkRatio.down).toFixed(0);
   }
 
   fixed(num: number) {
