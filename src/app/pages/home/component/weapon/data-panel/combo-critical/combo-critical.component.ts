@@ -5,7 +5,8 @@ import { ShushuService } from '@src/app/core/service/shushu.service';
 import { ExtraInfo } from '../../model';
 
 // TODO 如果da+ta满100就不触发sa 需要进行期望计算改动
-// 2*ta+1.5*min(1-ta,da)+1*max(1-da-ta,0)
+// 满100. 溢出da无效
+// 不满100 2*ta+1.5*min(1-ta,da)+1*max(1-da-ta,0)
 // 伤害期望计算
 // 100x1x0.1
 // 基础伤害 x TA倍率（1） x TA率
