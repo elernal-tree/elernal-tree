@@ -1,0 +1,54 @@
+<nz-table
+  [nzWidthConfig]="nzWidthConfig"
+  [nzBordered]="true"
+  nzSize="small"
+  [nzData]="[1]"
+  [nzShowPagination]="false">
+  <thead>
+    <tr>
+      <th>DA</th>
+      <th>TA</th>
+      <th>暴击率</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>{{ fixed(da) }}</td>
+      <td>{{ fixed(ta) }}</td>
+      <td>{{ fixed(critical) }}</td>
+    </tr>
+  </tbody>
+</nz-table>
+
+<div style="margin: 8px">此处只是伤害期望,并且由于圆桌影响,当前计算已不准确</div>
+<nz-table
+  [nzWidthConfig]="nzWidthConfig"
+  [nzBordered]="true"
+  nzSize="small"
+  [nzData]="[1]"
+  [nzShowPagination]="false">
+  <thead>
+    <tr>
+      <th></th>
+      <th>连击</th>
+      <th>连击+暴击</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>通常</td>
+      <td>{{ fixedDamage(damage) }}</td>
+      <td>{{ fixedDamage(criDamage) }}</td>
+    </tr>
+    <tr>
+      <td>有利</td>
+      <td>{{ fixedDamage(damage * 1.25) }}</td>
+      <td>{{ fixedDamage(criUpDamage * 1.25) }}</td>
+    </tr>
+    <tr>
+      <td>不利</td>
+      <td>{{ fixedDamage(damage * 0.75) }}</td>
+      <td>{{ fixedDamage(criDownDamage * 0.75) }}</td>
+    </tr>
+  </tbody>
+</nz-table>

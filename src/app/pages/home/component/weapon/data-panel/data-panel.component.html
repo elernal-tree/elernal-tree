@@ -52,29 +52,22 @@
         <span class="desc-title">回响HP</span>
         <span class="pure-hp">{{ panelData.pureHp }}</span>
       </div>
-      <div  nz-col nzSpan="12">
+      <div nz-col nzSpan="12">
         <span class="desc-title">回响攻击力</span>
         <span class="pure-atk">{{ panelData.pureAtk }}</span>
       </div>
     </div>
 
-    <app-extra-info  [extra]="extra"></app-extra-info>
+    <app-extra-info [extra]="extra"></app-extra-info>
   </div>
 
   <nz-tabset nz-col nzSpan="14" nzSize="small" nzType="card">
     <nz-tab nzTitle="结果">
       <app-result
-        [atkBonus]="atkBonus"
         [hpBonus]="hpBonus"
         [hpPercent]="extra.hpPercent"
-        [da]="da"
-        [ta]="ta"
         [critical]="critical"
         [criticalDamageRatio]="criticalDamageRatio"
-        [skill]="skill"
-        [skillLimit]="skillLimit"
-        [ub]="ub"
-        [ubLimit]="ubLimit"
         [magunaEnmity]="magunaEnmity"
         [normalEnmity]="normalEnmity"
         [exEnmity]="exEnmity"
@@ -85,27 +78,31 @@
         [exStamina]="exStamina"
         [weaponStamina]="extra.weaponStamina"
         [sklStamina]="extra.sklStamina"
+        [attributeBonus]="attributeBonus"
+        [magunaAtk]="magunaAtk"
+        [normalAtk]="normalAtk"
+        [exAtk]="exAtk"
+        [atkDamage]="atkDamage"
         [pureHp]="pureHp"></app-result>
     </nz-tab>
 
-    <nz-tab nzTitle="伤害预测">
-      <app-attck
+    <nz-tab nzTitle="连击暴击">
+      <app-combo-critical
         [atkDamage]="atkDamage"
-        [skillLimit]="skillLimit"
-        [ubLimit]="ubLimit"
-        [ub]="ub"
-        [skill]="skill"
+        [extra]="extra"
+        [critical]="critical"
+        [ta]="ta"
         [criticalDamageRatio]="criticalDamageRatio"
-        [extra]="extra"></app-attck>
+        [da]="da"></app-combo-critical>
     </nz-tab>
 
-    <nz-tab nzTitle="伤害期望">
-      <app-expect
+    <nz-tab nzTitle="技能奥义">
+      <app-skl-ub
         [atkDamage]="atkDamage"
-        [ta]="ta"
-        [da]="da"
-        [criticalDamageRatio]="criticalDamageRatio"
-        [critical]="critical"></app-expect>
+        [skill]="skill"
+        [ub]="ub"
+        [ubLimit]="ubLimit"
+        [skillLimit]="skillLimit"></app-skl-ub>
     </nz-tab>
   </nz-tabset>
 </div>
