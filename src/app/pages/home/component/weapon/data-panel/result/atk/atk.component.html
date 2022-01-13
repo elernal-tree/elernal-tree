@@ -1,0 +1,20 @@
+<nz-table
+  [nzBordered]="true"
+  nzSize="small"
+  [nzData]="[1]"
+  [nzShowPagination]="false">
+  <thead>
+    <tr>
+      <th>方阵</th>
+      <th>普刃</th>
+      <th>EX</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>{{fixed(magunaAtk)}}</td>
+      <td>{{fixed(normalAtk)}}</td>
+      <td>{{fixed(exAtk)}}</td>
+    </tr>
+  </tbody>
+</nz-table>

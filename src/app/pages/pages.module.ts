@@ -14,14 +14,13 @@ import { NzIconModule } from 'ng-zorro-antd/icon';
 import { IconDefinition } from '@ant-design/icons-angular';
 import { PlusOutline } from '@ant-design/icons-angular/icons';
 import { ResultComponent } from './home/component/weapon/data-panel/result/result.component';
-import { AttckComponent } from './home/component/weapon/data-panel/attck/attck.component';
-import { ExpectComponent } from './home/component/weapon/data-panel/expect/expect.component';
-import { SkillComponent } from './home/component/weapon/data-panel/skill/skill.component';
-import { UbComponent } from './home/component/weapon/data-panel/ub/ub.component';
 import { ExtraInfoComponent } from './home/component/weapon/data-panel/extra-info/extra-info.component';
 import { EnmityComponent } from './home/component/weapon/data-panel/result/enmity/enmity.component';
 import { StaminaComponent } from './home/component/weapon/data-panel/result/stamina/stamina.component';
 import { AboutComponent } from './about/about.component';
+import { AtkComponent } from './home/component/weapon/data-panel/result/atk/atk.component';
+import { SklUbComponent } from './home/component/weapon/data-panel/skl-ub/skl-ub.component';
+import { ComboCriticalComponent } from './home/component/weapon/data-panel/combo-critical/combo-critical.component';
 
 const icons: IconDefinition[] = [ PlusOutline ];
 
@@ -33,14 +32,13 @@ const icons: IconDefinition[] = [ PlusOutline ];
     WeaponItemComponent,
     DataPanelComponent,
     ResultComponent,
-    AttckComponent,
-    ExpectComponent,
-    SkillComponent,
-    UbComponent,
     ExtraInfoComponent,
     EnmityComponent,
     StaminaComponent,
-    AboutComponent
+    AboutComponent,
+    AtkComponent,
+    SklUbComponent,
+    ComboCriticalComponent
   ],
   imports: [
     CommonModule,

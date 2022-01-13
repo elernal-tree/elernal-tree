@@ -1,40 +1,20 @@
 <nz-table
-  [nzWidthConfig]="nzWidthConfig"
   [nzBordered]="true"
+  [nzWidthConfig]="nzWidthConfig"
   nzSize="small"
   [nzData]="[1]"
   [nzShowPagination]="false">
   <thead>
     <tr>
-      <th>攻刃</th>
-      <th
-        nz-popover
-        nzPopoverTitle="加成后生命值"
-        [nzPopoverContent]="hp">
-        生命值 <i nz-icon nzType="question-circle" nzTheme="outline"></i>
+      <th nz-popover nzPopoverTitle="各区间攻刃" [nzPopoverContent]="atkTemplate">
+        攻刃<i nz-icon nzType="question-circle" nzTheme="outline"></i>
+        <ng-template #atkTemplate>
+          <app-atk [magunaAtk]="magunaAtk" [normalAtk]="normalAtk" [exAtk]="exAtk"></app-atk>
+        </ng-template>
       </th>
-      <th>DA</th>
-      <th>TA</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <td>{{ fixed(atkBonus) }}</td>
-      <td>{{ fixed(hpBonus) }}</td>
-      <td>{{ fixed(da) }}</td>
-      <td>{{ fixed(ta) }}</td>
-    </tr>
-  </tbody>
-</nz-table>
-
-<nz-table
-  [nzWidthConfig]="nzWidthConfig"
-  [nzBordered]="true"
-  nzSize="small"
-  [nzData]="[1]"
-  [nzShowPagination]="false">
-  <thead>
-    <tr>
+      <th nz-popover nzPopoverTitle="加成后生命值" [nzPopoverContent]="hp">
+        hp <i nz-icon nzType="question-circle" nzTheme="outline"></i>
+      </th>
       <th
         nz-popover
         nzPopoverTitle="均为当前血量的背水加成(50%血量刚好为面板值)"
@@ -64,40 +44,48 @@
             [magunaStamina]="magunaStamina * staminaWithHp"></app-stamina>
         </ng-template>
       </th>
-      <th>暴击率</th>
-      <th>暴击伤害</th>
+      <th>属攻</th>
     </tr>
   </thead>
   <tbody>
     <tr>
+      <td>{{ fixed(atkBonus) }}</td>
+      <td>{{ fixed(hpBonus) }}</td>
       <td>{{ fixed(enmity) }}</td>
       <td>{{ fixed(stamina) }}</td>
-      <td>{{ fixed(critical) }}</td>
-      <td>{{ fixed(criticalDamageRatio) }}</td>
+      <td>{{ fixed(attributeBonus) }}</td>
     </tr>
   </tbody>
 </nz-table>
 
 <nz-table
-  [nzWidthConfig]="nzWidthConfig"
+  style="margin-top: 15px"
   [nzBordered]="true"
   nzSize="small"
   [nzData]="[1]"
   [nzShowPagination]="false">
   <thead>
     <tr>
-      <th>技伤</th>
-      <th>技伤上限</th>
-      <th>奥义</th>
-      <th>奥义上限</th>
+      <th></th>
+      <th>普攻</th>
+      <th>暴击</th>
     </tr>
   </thead>
   <tbody>
     <tr>
-      <td>{{ fixed(skill) }}</td>
-      <td>{{ fixed(skillLimit) }}</td>
-      <td>{{ fixed(ub) }}</td>
-      <td>{{ fixed(ubLimit) }}</td>
+      <td>通常</td>
+      <td>{{ damage }}</td>
+      <td>{{ criDamage }}</td>
+    </tr>
+    <tr>
+      <td>有利</td>
+      <td>{{ upDamage }}</td>
+      <td>{{ criUpDamage }}</td>
+    </tr>
+    <tr>
+      <td>不利</td>
+      <td>{{ downDamage }}</td>
+      <td>{{ criDownDamage }}</td>
     </tr>
   </tbody>
 </nz-table>

@@ -1,5 +1,6 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { ShushuService } from '@app/core/service/shushu.service';
+import { AtkRatio, CriRatio } from '@src/app/constants/constants';
 
 @Component({
   selector: 'app-result',
@@ -7,20 +8,13 @@ import { ShushuService } from '@app/core/service/shushu.service';
   styleUrls: ['./result.component.scss'],
 })
 export class ResultComponent {
-  nzWidthConfig = new Array(4).fill('25%');
+  nzWidthConfig = new Array(5).fill('20%');
 
-  @Input() atkBonus: number;
   @Input() hpBonus: number;
   @Input() hpPercent: number;
-  @Input() da: number;
-  @Input() ta: number;
   @Input() pureHp: number;
   @Input() critical: number;
   @Input() criticalDamageRatio: number;
-  @Input() skill: number;
-  @Input() skillLimit: number;
-  @Input() ub: number;
-  @Input() ubLimit: number;
   @Input() magunaEnmity: number;
   @Input() normalEnmity: number;
   @Input() exEnmity: number;
@@ -31,11 +25,20 @@ export class ResultComponent {
   @Input() exStamina: number;
   @Input() weaponStamina: number;
   @Input() sklStamina: number;
+  @Input() attributeBonus: number;
+  @Input() magunaAtk: number;
+  @Input() normalAtk: number;
+  @Input() exAtk: number;
+  @Input() atkDamage: number;
 
   constructor(private shushuSrv: ShushuService) {}
 
   fixed(num: number) {
     return (num * 100).toFixed(2);
+  }
+
+  fixedAtkDamage(num: number) {
+    return this.shushuSrv.atkLimit(num, 1).toFixed(0);
   }
 
   get enmityWithHp() {
@@ -69,6 +72,37 @@ export class ResultComponent {
   }
 
   get hp() {
-    return (this.pureHp * ( 1 + this.hpBonus)).toFixed(0);
+    return (this.pureHp * (1 + this.hpBonus)).toFixed(0);
+  }
+  get atkBonus() {
+    return (1 + this.magunaAtk) * (1 + this.normalAtk) * (1 + this.exAtk) - 1;
+  }
+
+  get damage() {
+    return this.fixedAtkDamage(this.atkDamage * AtkRatio.normal);
+  }
+
+  get upDamage() {
+    return this.fixedAtkDamage(this.atkDamage * AtkRatio.up);
+  }
+
+  get downDamage() {
+    return this.fixedAtkDamage(this.atkDamage * AtkRatio.down);
+  }
+
+  get criDamage() {
+    return this.fixedAtkDamage(this.atkDamage * (CriRatio.noraml + this.criticalDamageRatio));
+  }
+
+  get criUpDamage() {
+    return this.fixedAtkDamage(
+      this.atkDamage * AtkRatio.up * (CriRatio.up + this.criticalDamageRatio)
+    );
+  }
+
+  get criDownDamage() {
+    return this.fixedAtkDamage(
+      this.atkDamage * AtkRatio.down * (CriRatio.down + this.criticalDamageRatio)
+    );
   }
 }

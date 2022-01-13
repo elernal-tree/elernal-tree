@@ -84,7 +84,7 @@ export class WeaponComponent {
       normal: 0,
       ex: 0,
       maguna: 0,
-    }
+    },
   };
 
   constructor() {}
@@ -166,18 +166,20 @@ export class WeaponComponent {
         pureAtk += core.coreMinAtk + core.coreAddAtk * (weapon.lv - 1);
         const paSkillFuncition2 = stage.skill2?.paSkillFuncition ?? [];
         const paSkillFuncition = [...stage.skill1.paSkillFuncition, ...paSkillFuncition2];
-        if (core.coreElement === this.panelData.element) {
-          this.countAtk(atk, paSkillFuncition, weapon.sLv);
-          this.countHp(hp, paSkillFuncition, weapon.sLv);
-          this.countDa(da, paSkillFuncition, weapon.sLv);
-          this.countTa(ta, paSkillFuncition, weapon.sLv);
-          this.countEnmity(enmity, paSkillFuncition, weapon.sLv);
-          this.countCritical(critical, paSkillFuncition, weapon.sLv);
-          this.countStamina(stamina, paSkillFuncition, weapon.sLv);
-          this.countUb(ub, paSkillFuncition, weapon.sLv);
-          this.countSkill(skill, paSkillFuncition, weapon.sLv);
-          this.countSkillLimit(skillLimit, paSkillFuncition, weapon.sLv);
-        }
+        paSkillFuncition.forEach((skillfn) => {
+          if (this.canCountWithElement(skillfn.element)) {
+            this.countAtk(atk, skillfn, weapon.sLv);
+            this.countHp(hp, skillfn, weapon.sLv);
+            this.countDa(da, skillfn, weapon.sLv);
+            this.countTa(ta, skillfn, weapon.sLv);
+            this.countEnmity(enmity, skillfn, weapon.sLv);
+            this.countCritical(critical, skillfn, weapon.sLv);
+            this.countStamina(stamina, skillfn, weapon.sLv);
+            this.countUb(ub, skillfn, weapon.sLv);
+            this.countSkill(skill, skillfn, weapon.sLv);
+            this.countSkillLimit(skillLimit, skillfn, weapon.sLv);
+          }
+        });
       }
     });
     this.panelData.pureAtk = pureAtk;
@@ -197,10 +199,10 @@ export class WeaponComponent {
   /**
    * 1 + (加成) * 回响
    */
-  countAtk(atk: Section, paSkillFuncition: PaSkillFuncition[], sklLv: number) {
-    paSkillFuncition.forEach((skillfn) => {
-      const sklVal = skillfn.paValue[sklLv];
+  countAtk(atk: Section, skillfn: PaSkillFuncition, sklLv: number) {
+    if (this.canCountWithElement(skillfn.element)) {
       if (skillfn.paramType === SklAttrType.atk) {
+        const sklVal = skillfn.paValue[sklLv];
         if (skillfn.section === SkillSection.maguna) {
           atk.maguna += sklVal;
         } else if (skillfn.section === SkillSection.normal) {
@@ -209,13 +211,13 @@ export class WeaponComponent {
           atk.ex += sklVal;
         }
       }
-    });
+    }
   }
 
-  countHp(hp: Section, paSkillFuncition: PaSkillFuncition[], sklLv: number) {
-    paSkillFuncition.forEach((skillfn) => {
-      const sklVal = skillfn.paValue[sklLv];
+  countHp(hp: Section, skillfn: PaSkillFuncition, sklLv: number) {
+    if (this.canCountWithElement(skillfn.element)) {
       if (skillfn.paramType === SklAttrType.hp) {
+        const sklVal = skillfn.paValue[sklLv];
         if (skillfn.section === SkillSection.maguna) {
           hp.maguna += sklVal;
         } else if (skillfn.section === SkillSection.normal) {
@@ -224,13 +226,13 @@ export class WeaponComponent {
           hp.ex += sklVal;
         }
       }
-    });
+    }
   }
 
-  countEnmity(enmity: Section, paSkillFuncition: PaSkillFuncition[], sklLv: number) {
-    paSkillFuncition.forEach((skillfn) => {
-      const sklVal = skillfn.paValue[sklLv];
+  countEnmity(enmity: Section, skillfn: PaSkillFuncition, sklLv: number) {
+    if (this.canCountWithElement(skillfn.element)) {
       if (skillfn.paramType === SklAttrType.enmity) {
+        const sklVal = skillfn.paValue[sklLv];
         if (skillfn.section === SkillSection.maguna) {
           enmity.maguna += sklVal;
         } else if (skillfn.section === SkillSection.normal) {
@@ -239,12 +241,12 @@ export class WeaponComponent {
           enmity.ex += sklVal;
         }
       }
-    });
+    }
   }
-  countStamina(stamina: Section, paSkillFuncition: PaSkillFuncition[], sklLv: number) {
-    paSkillFuncition.forEach((skillfn) => {
-      const sklVal = skillfn.paValue[sklLv];
+  countStamina(stamina: Section, skillfn: PaSkillFuncition, sklLv: number) {
+    if (this.canCountWithElement(skillfn.element)) {
       if (skillfn.paramType === SklAttrType.stamina) {
+        const sklVal = skillfn.paValue[sklLv];
         if (skillfn.section === SkillSection.maguna) {
           stamina.maguna += sklVal;
         } else if (skillfn.section === SkillSection.normal) {
@@ -253,13 +255,13 @@ export class WeaponComponent {
           stamina.ex += sklVal;
         }
       }
-    });
+    }
   }
 
-  countDa(da: Section, paSkillFuncition: PaSkillFuncition[], sklLv: number) {
-    paSkillFuncition.forEach((skillfn) => {
-      const sklVal = skillfn.paValue[sklLv];
+  countDa(da: Section, skillfn: PaSkillFuncition, sklLv: number) {
+    if (this.canCountWithElement(skillfn.element)) {
       if (skillfn.paramType === SklAttrType.da) {
+        const sklVal = skillfn.paValue[sklLv];
         if (skillfn.section === SkillSection.maguna) {
           da.maguna += sklVal;
         } else if (skillfn.section === SkillSection.normal) {
@@ -268,12 +270,12 @@ export class WeaponComponent {
           da.ex += sklVal;
         }
       }
-    });
+    }
   }
-  countTa(ta: Section, paSkillFuncition: PaSkillFuncition[], sklLv: number) {
-    paSkillFuncition.forEach((skillfn) => {
-      const sklVal = skillfn.paValue[sklLv];
+  countTa(ta: Section, skillfn: PaSkillFuncition, sklLv: number) {
+    if (this.canCountWithElement(skillfn.element)) {
       if (skillfn.paramType === SklAttrType.ta) {
+        const sklVal = skillfn.paValue[sklLv];
         if (skillfn.section === SkillSection.maguna) {
           ta.maguna += sklVal;
         } else if (skillfn.section === SkillSection.normal) {
@@ -282,12 +284,12 @@ export class WeaponComponent {
           ta.ex += sklVal;
         }
       }
-    });
+    }
   }
-  countCritical(critical: Section, paSkillFuncition: PaSkillFuncition[], sklLv: number) {
-    paSkillFuncition.forEach((skillfn) => {
-      const sklVal = skillfn.paValue[sklLv];
+  countCritical(critical: Section, skillfn: PaSkillFuncition, sklLv: number) {
+    if (this.canCountWithElement(skillfn.element)) {
       if (skillfn.paramType === SklAttrType.critical) {
+        const sklVal = skillfn.paValue[sklLv];
         if (skillfn.section === SkillSection.maguna) {
           critical.maguna += sklVal;
         } else if (skillfn.section === SkillSection.normal) {
@@ -296,12 +298,12 @@ export class WeaponComponent {
           critical.ex += sklVal;
         }
       }
-    });
+    }
   }
-  countUb(ub: Section, paSkillFuncition: PaSkillFuncition[], sklLv: number) {
-    paSkillFuncition.forEach((skillfn) => {
-      const sklVal = skillfn.paValue[sklLv];
+  countUb(ub: Section, skillfn: PaSkillFuncition, sklLv: number) {
+    if (this.canCountWithElement(skillfn.element)) {
       if (skillfn.paramType === SklAttrType.ub) {
+        const sklVal = skillfn.paValue[sklLv];
         if (skillfn.section === SkillSection.maguna) {
           ub.maguna += sklVal;
         } else if (skillfn.section === SkillSection.normal) {
@@ -310,12 +312,12 @@ export class WeaponComponent {
           ub.ex += sklVal;
         }
       }
-    });
+    }
   }
-  countSkill(skill: Section, paSkillFuncition: PaSkillFuncition[], sklLv: number) {
-    paSkillFuncition.forEach((skillfn) => {
-      const sklVal = skillfn.paValue[sklLv];
+  countSkill(skill: Section, skillfn: PaSkillFuncition, sklLv: number) {
+    if (this.canCountWithElement(skillfn.element)) {
       if (skillfn.paramType === SklAttrType.skill) {
+        const sklVal = skillfn.paValue[sklLv];
         if (skillfn.section === SkillSection.maguna) {
           skill.maguna += sklVal;
         } else if (skillfn.section === SkillSection.normal) {
@@ -324,12 +326,12 @@ export class WeaponComponent {
           skill.ex += sklVal;
         }
       }
-    });
+    }
   }
-  countSkillLimit(skillLimit: Section, paSkillFuncition: PaSkillFuncition[], sklLv: number) {
-    paSkillFuncition.forEach((skillfn) => {
-      const sklVal = skillfn.paValue[sklLv];
+  countSkillLimit(skillLimit: Section, skillfn: PaSkillFuncition, sklLv: number) {
+    if (this.canCountWithElement(skillfn.element)) {
       if (skillfn.paramType === SklAttrType.skillLimit) {
+        const sklVal = skillfn.paValue[sklLv];
         if (skillfn.section === SkillSection.maguna) {
           skillLimit.maguna += sklVal;
         } else if (skillfn.section === SkillSection.normal) {
@@ -338,6 +340,10 @@ export class WeaponComponent {
           skillLimit.ex += sklVal;
         }
       }
-    });
+    }
+  }
+  /** elemnt为0或者无，为全属性加成,列如格拉拉. */
+  canCountWithElement(element?: number) {
+    return !element || this.panelData.element === element;
   }
 }
