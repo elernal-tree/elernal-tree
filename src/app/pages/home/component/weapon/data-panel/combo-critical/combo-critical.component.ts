@@ -29,7 +29,7 @@ export class ComboCriticalComponent {
   @Input() critical: number;
   @Input() criticalDamageRatio: number;
 
-  nzWidthConfig = new Array(3).fill('33%')
+  nzWidthConfig = new Array(3).fill('33%');
 
   fixedDamage(num: number) {
     return this.shushuSrc.atkLimit(num, AtkType.ta).toFixed(0);
@@ -38,13 +38,24 @@ export class ComboCriticalComponent {
   fixed(num: number) {
     return (num * 100).toFixed(2);
   }
+  /**原算法 */
+  // get damage() {
+  //   return (
+  //     (DaTaRatio.ta * this.ta +
+  //       DaTaRatio.da * (1 - this.ta) * this.da +
+  //       (1 - this.ta) * (1 - this.da)) *
+  //     this.atkDamage
+  //   );
+  // }
+
+  /** 树树为圆桌，ta+da满100必定无sa */
 
   get damage() {
     return (
+      this.atkDamage *
       (DaTaRatio.ta * this.ta +
-        DaTaRatio.da * (1 - this.ta) * this.da +
-        (1 - this.ta) * (1 - this.da)) *
-      this.atkDamage
+        DaTaRatio.da * Math.min(this.da, 1 - this.ta) +
+        Math.max(0, 1 - this.ta - this.da))
     );
   }
 
