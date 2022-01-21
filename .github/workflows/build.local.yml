@@ -31,7 +31,7 @@ jobs:
       - name: commit 
         uses: stefanzweifel/git-auto-commit-action@v4
         with:
-          add_options: '-A'
+          add_options: '-u'
           push_options: '--force'
           skip_fetch: true 
           commit_message: ":bookmark: Release elernal-tree commit tag ${{ github.event.inputs.TAG }}"
