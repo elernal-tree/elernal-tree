@@ -13,7 +13,7 @@ import { CoreOption } from '@src/app/constants/constants';
 })
 export class ArsenalComponent implements OnInit {
   coreList: Core[] = [];
-  currentCoreElement = CoreElement.风;
+  currentCoreElement = CoreElement.火;
   coreOption = CoreOption;
 
   constructor(private _http: HttpClient) {}

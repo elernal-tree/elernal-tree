@@ -18,7 +18,7 @@ export class WeaponComponent {
   });
 
   panelData: PanelData = {
-    element: CoreElement.风,
+    element: CoreElement.火,
     mainRobot: Robot.maguna,
     mainRobotValue: 0,
     subRobot: Robot.attribute,
