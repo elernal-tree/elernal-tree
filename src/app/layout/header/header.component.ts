@@ -18,5 +18,9 @@ export class HeaderComponent  {
     this.router.navigate(['/about'])
   }
 
+  home() {
+    this.router.navigate(['/'])
+  }
+
 
 }
