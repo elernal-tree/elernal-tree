@@ -45,6 +45,6 @@ export class ShushuService {
       return 0;
     }
     const X = hp / 100;
-    return 0.99 * X + 0.075 * X + 0.01;
+    return 0.99 * X * X + 0.075 * X + 0.01;
   }
 }
