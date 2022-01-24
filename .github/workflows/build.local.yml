@@ -29,7 +29,7 @@ jobs:
           ng build --configuration production
           ls static/web
       - name: commit 
-        uses: stefanzweifel/git-auto-commit-action@v4
+        uses: stefanzweifel/git-auto-commit-action@v4.12.0.
         with:
           branch: master
           add_options: '-A'
