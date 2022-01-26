@@ -33,6 +33,7 @@ export enum SklAttrType {
   critical = 10, // 暴击率
   ub,
   skill = 13,
+  ubLimit = 22,
   skillLimit = 23,
   counter = 43,
 }

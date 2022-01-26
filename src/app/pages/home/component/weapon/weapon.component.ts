@@ -158,6 +158,11 @@ export class WeaponComponent {
       maguna: 0,
       ex: 0,
     };
+    const ubLimit: Section = {
+      normal: 0,
+      maguna: 0,
+      ex: 0,
+    };
     this.weaponList.forEach((weapon) => {
       if (weapon.core) {
         const core = weapon.core.data;
@@ -178,6 +183,7 @@ export class WeaponComponent {
             this.countUb(ub, skillfn, weapon.sLv);
             this.countSkill(skill, skillfn, weapon.sLv);
             this.countSkillLimit(skillLimit, skillfn, weapon.sLv);
+            this.countUbLimit(ubLimit, skillfn, weapon.sLv)
           }
         });
       }
@@ -194,6 +200,7 @@ export class WeaponComponent {
     this.panelData.ub = ub;
     this.panelData.skillDamage = skill;
     this.panelData.skillLimit = skillLimit;
+    this.panelData.ubLimit = ubLimit;
   }
 
   /**
@@ -345,5 +352,19 @@ export class WeaponComponent {
   /** elemnt为0或者无，为全属性加成,列如格拉拉. */
   canCountWithElement(element?: number) {
     return !element || this.panelData.element === element;
+  }
+  countUbLimit(ubLimit: Section, skillfn: PaSkillFuncition, sklLv: number) {
+    if (this.canCountWithElement(skillfn.element)) {
+      if (skillfn.paramType === SklAttrType.ubLimit) {
+        const sklVal = skillfn.paValue[sklLv];
+        if (skillfn.section === SkillSection.maguna) {
+          ubLimit.maguna += sklVal;
+        } else if (skillfn.section === SkillSection.normal) {
+          ubLimit.normal += sklVal;
+        } else if (skillfn.section === SkillSection.ex) {
+          ubLimit.ex += sklVal;
+        }
+      }
+    }
   }
 }
