@@ -2,7 +2,6 @@ import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import { Core } from '@src/app/model/core';
 import { HttpClient } from '@angular/common/http';
 import { CoreElement, CoreSeries } from '@src/app/constants/enum';
-import { outCoreList } from './outCore';
 import { CdkDragDrop, CdkDragStart, CdkDragMove } from '@angular/cdk/drag-drop';
 import { CoreOption } from '@src/app/constants/constants';
 
@@ -20,7 +19,7 @@ export class ArsenalComponent implements OnInit {
 
   ngOnInit(): void {
     this._http.get<Core[]>('/api/core').subscribe((r) => {
-      this.coreList = r.filter((core) => !outCoreList.includes(core.id));
+      this.coreList = r;
     });
   }
 
