@@ -51,6 +51,7 @@ export class DataPanelComponent {
     sklStamina: 0,
     da: 0,
     ta: 0,
+    hpBonus: 20
   };
 
   constructor(private shushuSrv: ShushuService) {}
@@ -122,8 +123,9 @@ export class DataPanelComponent {
    * 综合上限 -99.99%~
    */
   get hpBonus() {
-    const hp = this.magunaHp + this.normalHp + this.exHp;
-    return hp <= Limit.totalHp ? Limit.totalHp : hp;
+    let hp = this.magunaHp + this.normalHp + this.exHp;
+     hp = hp <= Limit.totalHp ? Limit.totalHp : hp;
+     return hp + this.extra.hpBonus / 100;
   }
 
   get magunaDa() {

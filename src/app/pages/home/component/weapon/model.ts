@@ -55,4 +55,5 @@ export interface ExtraInfo {
   sklEnmity: number;
   da: number;
   ta: number;
+  hpBonus: number;
 }
