@@ -30,7 +30,7 @@ export class ShushuService {
     if (hp >= 80) {
       return 0;
     }
-    const X = 1 - hp / 100;
+    const X = hp / 100;
     return 1.3 * X * X - 3.75 * X + 2.55;
   }
 
