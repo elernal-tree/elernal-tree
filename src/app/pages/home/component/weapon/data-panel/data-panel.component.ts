@@ -68,9 +68,7 @@ export class DataPanelComponent {
   }
 
   get attributeBonus() {
-    return (
-      (this.roboteBonus.attribute ? +this.roboteBonus.attribute + this.extra.attribute : 0) / 100
-    );
+    return (this.roboteBonus.attribute + this.extra.attribute) / 100;
   }
 
   get roboteBonus() {
