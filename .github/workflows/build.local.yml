@@ -43,8 +43,8 @@ jobs:
         run: |
           git pull
           ls static/web/*
-      - uses: actions/checkout@v2
-      - name: Release to github
+      # - uses: actions/checkout@v2
+      # - name: Release to github
         uses: ncipollo/release-action@v1
         with:
             allowUpdates: true

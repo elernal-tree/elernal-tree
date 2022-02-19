@@ -4,6 +4,8 @@
   &-box {
     display: flex;
     flex-wrap: wrap;
+    max-height: 200px;
+    overflow-y: auto;
   }
 
   padding: 5px;
