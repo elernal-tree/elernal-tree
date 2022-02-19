@@ -39,14 +39,17 @@ jobs:
           skip_fetch: true 
           commit_message: ":bookmark: Release elernal-tree commit tag ${{ github.event.inputs.TAG }}"
           file_pattern: static/web/*
-      - name: update repo
+      - name: change 
         run: |
-          git pull
-          ls static/web/*
-      # - name: checkout
-      #   uses: actions/checkout@v2
-      #   with:
-      #       ref: master
+          mkdir aa
+          cd aa
+      - name: checkout
+        uses: actions/checkout@v2
+        with:
+            ref: master
+      - name: check fils 
+        run: |
+          ls static/web
       - name: Release to github
         uses: ncipollo/release-action@v1
         with:
