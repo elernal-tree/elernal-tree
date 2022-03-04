@@ -35,6 +35,7 @@ export enum SklAttrType {
   skill = 13,
   ubLimit = 22,
   skillLimit = 23,
+  criticalDamageRatio = 36,
   counter = 43,
 }
 

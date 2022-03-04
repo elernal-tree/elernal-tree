@@ -18,7 +18,8 @@ export class WeaponItemComponent {
 
   @Output() dataChange = new EventEmitter<void>();
 
-  sLvOption = [{ label: 1, value: 0 }, { label: 2, value: 1 }, { label: 3, value: 2 }, { label: 4, value: 3 }]
+  sLvOption = [{ label: 1, value: 0 }, { label: 2, value: 1 }, { label: 3, value: 2 }, { label: 4, value: 3 }];
+  exLvOption = new Array(60).fill(0).map((_, index) => ({label: index + 1, value: index}));
   constructor() { }
 
   dragDroped(event: any) {

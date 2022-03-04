@@ -15,7 +15,7 @@
 
   <div style="padding: 5px">
     <div class="g-flex" style="margin-bottom: 5px">
-      <span style="width: 20px; flex-shrink: 0">Lv</span>
+      <span style="width: 32px; flex-shrink: 0">Lv</span>
       <nz-input-number
         [(ngModel)]="weapon.lv"
         (nzBlur)="onDataChange()"
@@ -24,7 +24,7 @@
         [nzStep]="1"></nz-input-number>
     </div>
     <div class="g-flex">
-      <span style="width: 20px; flex-shrink: 0">slv</span>
+      <span style="width: 32px; flex-shrink: 0">slv</span>
       <nz-select
         style="flex-grow: 1"
         [nzSize]="'small'"
@@ -32,6 +32,18 @@
         (ngModelChange)="onDataChange()"
         nzAllowClear>
         <nz-option *ngFor="let item of sLvOption" [nzLabel]="item.label" [nzValue]="item.value">
+        </nz-option>
+      </nz-select>
+    </div>
+    <div class="g-flex">
+      <span style="width: 32px; flex-shrink: 0">exLv</span>
+      <nz-select
+        style="flex-grow: 1"
+        [nzSize]="'small'"
+        [(ngModel)]="weapon.exLv"
+        (ngModelChange)="onDataChange()"
+        nzAllowClear>
+        <nz-option *ngFor="let item of exLvOption" [nzLabel]="item.label" [nzValue]="item.value">
         </nz-option>
       </nz-select>
     </div>

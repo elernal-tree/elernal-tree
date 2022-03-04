@@ -25,6 +25,8 @@ export interface CoreData {
     cnDescription: string[];
     cnData:        string[];
     prefix:        string[];
+    coreBounsAtk:  number[];
+    coreBounsHp:   number[];
 }
 
 export interface CoreStage {

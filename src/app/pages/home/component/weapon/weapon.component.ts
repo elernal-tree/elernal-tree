@@ -15,6 +15,7 @@ export class WeaponComponent {
     core: null,
     lv: 60,
     sLv: 3,
+    exLv: 0
   });
 
   panelData: PanelData = {
@@ -96,6 +97,7 @@ export class WeaponComponent {
         core: data,
         lv: 60,
         sLv: 3,
+        exLv: 0
       };
     } else {
       if (this.weaponList[ev.index].core) {
@@ -163,12 +165,17 @@ export class WeaponComponent {
       maguna: 0,
       ex: 0,
     };
+    const criticalDamageRatio: Section = {
+      normal: 0,
+      maguna: 0,
+      ex: 0,
+    };
     this.weaponList.forEach((weapon) => {
       if (weapon.core) {
         const core = weapon.core.data;
         const stage = core.coreStage[core.coreMaxstage];
-        pureHp += core.coreMinHp + core.coreAddHp * (weapon.lv - 1);
-        pureAtk += core.coreMinAtk + core.coreAddAtk * (weapon.lv - 1);
+        pureHp += core.coreMinHp + core.coreAddHp * (weapon.lv - 1) + core.coreBounsHp[weapon.exLv];
+        pureAtk += core.coreMinAtk + core.coreAddAtk * (weapon.lv - 1) + core.coreBounsAtk[weapon.exLv];
         const paSkillFuncition2 = stage.skill2?.paSkillFuncition ?? [];
         const paSkillFuncition = [...stage.skill1.paSkillFuncition, ...paSkillFuncition2];
         paSkillFuncition.forEach((skillfn) => {
@@ -183,7 +190,8 @@ export class WeaponComponent {
             this.countUb(ub, skillfn, weapon.sLv);
             this.countSkill(skill, skillfn, weapon.sLv);
             this.countSkillLimit(skillLimit, skillfn, weapon.sLv);
-            this.countUbLimit(ubLimit, skillfn, weapon.sLv)
+            this.countUbLimit(ubLimit, skillfn, weapon.sLv);
+            this.countCrticaliDamageRatio(criticalDamageRatio, skillfn, weapon.sLv);
           }
         });
       }
@@ -201,6 +209,7 @@ export class WeaponComponent {
     this.panelData.skillDamage = skill;
     this.panelData.skillLimit = skillLimit;
     this.panelData.ubLimit = ubLimit;
+    this.panelData.criticalDamageRatio = criticalDamageRatio;
   }
 
   /**
@@ -363,6 +372,21 @@ export class WeaponComponent {
           ubLimit.normal += sklVal;
         } else if (skillfn.section === SkillSection.ex) {
           ubLimit.ex += sklVal;
+        }
+      }
+    }
+  }
+
+  countCrticaliDamageRatio(crticaliDamageRatio: Section, skillfn: PaSkillFuncition, sklLv: number) {
+    if (this.canCountWithElement(skillfn.element)) {
+      if (skillfn.paramType === SklAttrType.criticalDamageRatio) {
+        const sklVal = skillfn.paValue[sklLv];
+        if (skillfn.section === SkillSection.maguna) {
+          crticaliDamageRatio.maguna += sklVal;
+        } else if (skillfn.section === SkillSection.normal) {
+          crticaliDamageRatio.normal += sklVal;
+        } else if (skillfn.section === SkillSection.ex) {
+          crticaliDamageRatio.ex += sklVal;
         }
       }
     }

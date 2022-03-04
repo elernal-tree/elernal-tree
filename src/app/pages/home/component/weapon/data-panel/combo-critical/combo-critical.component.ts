@@ -29,7 +29,7 @@ export class ComboCriticalComponent {
   @Input() critical: number;
   @Input() criticalDamageRatio: number;
 
-  nzWidthConfig = new Array(3).fill('33%');
+  nzWidthConfig = new Array(3).fill('25%');
 
   fixedDamage(num: number) {
     return this.shushuSrc.atkLimit(num, AtkType.ta).toFixed(0);
