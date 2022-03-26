@@ -1,4 +1,4 @@
 export const environment = {
   production: true,
-  ImgUrl:"https://gitee.com/shanzhaikabi/elernal-tree/raw/master/core/{id}.png"
+  ImgUrl:"https://yjzs-core.oss-cn-beijing.aliyuncs.com/core/{id}.png"
 };

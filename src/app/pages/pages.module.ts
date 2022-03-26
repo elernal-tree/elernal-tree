@@ -21,6 +21,7 @@ import { AboutComponent } from './about/about.component';
 import { AtkComponent } from './home/component/weapon/data-panel/result/atk/atk.component';
 import { SklUbComponent } from './home/component/weapon/data-panel/skl-ub/skl-ub.component';
 import { ComboCriticalComponent } from './home/component/weapon/data-panel/combo-critical/combo-critical.component';
+import { SimulationComponent } from './simulation/simulation.component';
 
 const icons: IconDefinition[] = [ PlusOutline ];
 
@@ -38,7 +39,8 @@ const icons: IconDefinition[] = [ PlusOutline ];
     AboutComponent,
     AtkComponent,
     SklUbComponent,
-    ComboCriticalComponent
+    ComboCriticalComponent,
+    SimulationComponent
   ],
   imports: [
     CommonModule,
