@@ -58,7 +58,7 @@
     [nzStep]="1"></nz-input-number>
 </div>
 
-<div class="g-flex-between">
+<div class="desc g-flex-between">
   <div class="desc-label">暴击(%)</div>
   <nz-input-number
     [(ngModel)]="extra.cri"
@@ -73,7 +73,7 @@
     [nzStep]="1"></nz-input-number>
 </div>
 
-<div class="g-flex-between">
+<div class="desc g-flex-between">
   <div class="desc-label">DA(%)</div>
   <nz-input-number
     [(ngModel)]="extra.da"
@@ -88,7 +88,7 @@
     [nzStep]="1"></nz-input-number>
 </div>
 
-<div class="g-flex-between">
+<div class="desc g-flex-between">
   <div class="desc-label">武器背水(%)</div>
   <nz-input-number
     [(ngModel)]="extra.weaponEnmity"
@@ -103,7 +103,7 @@
     [nzStep]="1"></nz-input-number>
 </div>
 
-<div class="g-flex-between">
+<div class="desc g-flex-between">
   <div class="desc-label">技能背水(%)</div>
   <nz-input-number
     [(ngModel)]="extra.sklEnmity"
@@ -117,10 +117,56 @@
     [nzMin]="0"
     [nzStep]="1"></nz-input-number>
 </div>
-<div class="g-flex">
+
+<div class="desc g-flex-between">
   <div class="desc-label">hp(%)</div>
   <nz-input-number
     [(ngModel)]="extra.hpBonus"
+    [nzSize]="'small'"
+    [nzMin]="0"
+    [nzStep]="1"></nz-input-number>
+  <div class="desc-label">奥义上限(%)</div>
+  <nz-input-number
+    [(ngModel)]="extra.ubLimit"
+    [nzSize]="'small'"
+    [nzMin]="0"
+    [nzStep]="1"></nz-input-number>
+</div>
+
+<div class="g-flex-between">
+  <div class="desc-label">技伤上限(%)</div>
+  <nz-input-number
+    [(ngModel)]="extra.sklLimit"
+    [nzSize]="'small'"
+    [nzMin]="0"
+    [nzStep]="1"></nz-input-number>
+  <div class="desc-label">天人被动(%)</div>
+  <nz-input-number
+    [(ngModel)]="extra.spLimit"
+    [nzSize]="'small'"
+    [nzMin]="0"
+    [nzStep]="1"></nz-input-number>
+</div>
+
+<div class="g-flex-between">
+  <div class="desc-label">伤害上限(%)</div>
+  <nz-input-number
+    [(ngModel)]="extra.damageLimit"
+    [nzSize]="'small'"
+    [nzMin]="0"
+    [nzStep]="1"></nz-input-number>
+  <div class="desc-label">伤害增加(%)</div>
+  <nz-input-number
+    [(ngModel)]="extra.damageBonus"
+    [nzSize]="'small'"
+    [nzMin]="0"
+    [nzStep]="1"></nz-input-number>
+</div>
+
+<div class="g-flex">
+  <div class="desc-label">普攻上限(%)</div>
+  <nz-input-number
+    [(ngModel)]="extra.atkLimit"
     [nzSize]="'small'"
     [nzMin]="0"
     [nzStep]="1"></nz-input-number>

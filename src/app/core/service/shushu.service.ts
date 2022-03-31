@@ -8,17 +8,16 @@ import { AtkType } from '@src/app/constants/enum';
 export class ShushuService {
   constructor() {}
 
-  atkLimit(damage: number, type: AtkType) {
-    if (type === AtkType.sa) {
-      return damage >= Limit.saDamage ? Limit.saDamage : damage;
-    }
+  atkLimit(damage: number, type: AtkType, LimitBonus: number) {
+    let limit = Limit.saDamage;
     if (type === AtkType.da) {
-      return damage >= Limit.daDamage ? Limit.daDamage : damage;
+      limit = Limit.daDamage;
     }
     if (type === AtkType.ta) {
-      return damage >= Limit.taDamage ? Limit.taDamage : damage;
+      limit = Limit.taDamage;
     }
-    return damage;
+    limit = limit * ( 1 + LimitBonus);
+    return damage >= limit ? limit : damage;
   }
 
   /**

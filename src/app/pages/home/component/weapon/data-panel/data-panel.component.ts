@@ -51,7 +51,13 @@ export class DataPanelComponent {
     sklStamina: 0,
     da: 0,
     ta: 0,
-    hpBonus: 20
+    hpBonus: 20,
+    ubLimit: 0,
+    sklLimit: 0,
+    damageLimit: 0,
+    spLimit: 0,
+    damageBonus: 0,
+    atkLimit: 0,
   };
 
   constructor(private shushuSrv: ShushuService) {}
@@ -68,7 +74,7 @@ export class DataPanelComponent {
   }
 
   get attributeBonus() {
-    return (this.roboteBonus.attribute + this.extra.attribute) / 100;
+    return this.transferPercent(this.roboteBonus.attribute + this.extra.attribute);
   }
 
   get roboteBonus() {
@@ -85,10 +91,6 @@ export class DataPanelComponent {
     };
   }
 
-  fixed(num: number) {
-    return (num * 100).toFixed(2);
-  }
-
   get magunaAtk() {
     return this.calcBonus(this.panelData.atk.maguna, this.roboteBonus.maguna);
   }
@@ -100,7 +102,6 @@ export class DataPanelComponent {
   get exAtk() {
     return this.calcBonus(this.panelData.atk.ex, 0);
   }
-
 
   /**
    * 上限 -70%~
@@ -122,8 +123,8 @@ export class DataPanelComponent {
    */
   get hpBonus() {
     let hp = this.magunaHp + this.normalHp + this.exHp;
-     hp = hp <= Limit.totalHp ? Limit.totalHp : hp;
-     return hp + this.extra.hpBonus / 100;
+    hp = hp <= Limit.totalHp ? Limit.totalHp : hp;
+    return hp + this.transferPercent(this.extra.hpBonus);
   }
 
   get magunaDa() {
@@ -143,7 +144,7 @@ export class DataPanelComponent {
   get da() {
     let coreDa = this.magunaDa + this.normalDa + this.exDa;
     coreDa = coreDa >= Limit.combo ? Limit.combo : coreDa;
-    const da = coreDa + this.extra.da / 100;
+    const da = coreDa + this.transferPercent(this.extra.da);
     return da >= 1 ? 1 : da;
   }
 
@@ -163,7 +164,7 @@ export class DataPanelComponent {
   get ta() {
     let coreTa = this.magunaTa + this.normalTa + this.exTa;
     coreTa = coreTa >= Limit.combo ? Limit.combo : coreTa;
-    const ta = coreTa + this.extra.ta / 100;
+    const ta = coreTa + this.transferPercent(this.extra.ta);
     return ta >= 1 ? 1 : ta;
   }
   /**
@@ -219,7 +220,7 @@ export class DataPanelComponent {
   }
 
   get skill() {
-    return this.magunaSkl + this.mormalSkl + this.exSkl + this.extra.skill / 100;
+    return this.magunaSkl + this.mormalSkl + this.exSkl + this.transferPercent(this.extra.skill);
   }
 
   get magunaUb() {
@@ -233,7 +234,7 @@ export class DataPanelComponent {
     return this.calcBonus(this.panelData.ub.ex, 0);
   }
   get ub() {
-    return this.magunaUb + this.noramlUb + this.exUb + this.extra.ub / 100;
+    return this.magunaUb + this.noramlUb + this.exUb + this.transferPercent(this.extra.ub);
   }
   /**老王 方阵 ex每个区间 上限为 0~50% */
   getUbLimit(ub: number) {
@@ -253,7 +254,12 @@ export class DataPanelComponent {
   }
 
   get ubLimit() {
-    return this.magunaUbLimit + this.noramlUbLimit + this.exUbLimit;
+    return (
+      this.magunaUbLimit +
+      this.noramlUbLimit +
+      this.exUbLimit +
+      this.transferPercent(this.extra.ubLimit + this.extra.damageLimit)
+    );
   }
 
   /** 老王 方阵 ex每个区间 上限为  skillLimit 0~50% */
@@ -276,7 +282,12 @@ export class DataPanelComponent {
   }
 
   get skillLimit() {
-    return this.magunaSklLimit + this.normalSklLimit + this.exSklLimit;
+    return (
+      this.magunaSklLimit +
+      this.normalSklLimit +
+      this.exSklLimit +
+      this.transferPercent(this.extra.sklLimit + this.extra.damageLimit)
+    );
   }
 
   get magunaCri() {
@@ -291,7 +302,7 @@ export class DataPanelComponent {
   }
   /** 暴击率 */
   get critical() {
-    return this.magunaCri + this.normalCri + this.exCri + this.extra.cri / 100;
+    return this.magunaCri + this.normalCri + this.exCri + this.transferPercent(this.extra.cri);
   }
 
   get magunaCriticalDamageRatio() {
@@ -309,7 +320,7 @@ export class DataPanelComponent {
       this.magunaCriticalDamageRatio +
       this.normalCriticalDamageRatio +
       this.exCriticalDamageRatio +
-      this.extra.criDamageRadio / 100
+      this.transferPercent(this.extra.criDamageRadio)
     );
   }
   /** 基础10防御  由于浑身公式不明确 所以计算直接使用的面板数值*/
@@ -320,16 +331,29 @@ export class DataPanelComponent {
         (1 + this.normalAtk) *
         (1 + this.exAtk) *
         (1 + this.attributeBonus) *
-        (1 + this.extra.atkBuff / 100) *
-        (1 + (this.enmity + this.extra.weaponEnmity / 100) * this.enmityWithHp) *
-        (1 + (this.stamina + this.extra.weaponStamina / 100) * this.staminaWithHp) *
-        (1 + (this.extra.sklEnmity / 100) * this.enmityWithHp) *
-        (1 + (this.extra.sklStamina / 100) * this.staminaWithHp)) /
+        (1 + this.transferPercent(this.extra.atkBuff)) *
+        (1 + (this.enmity + this.transferPercent(this.extra.weaponEnmity)) * this.enmityWithHp) *
+        (1 + (this.stamina + this.transferPercent(this.extra.weaponStamina)) * this.staminaWithHp) *
+        (1 + this.transferPercent(this.extra.sklEnmity) * this.enmityWithHp) *
+        (1 + this.transferPercent(this.extra.sklStamina) * this.staminaWithHp) *
+        (1 + this.transferPercent(this.extra.damageBonus))) /
       this.extra.defense
     );
   }
   // HP白值
   get pureHp() {
     return this.panelData.pureHp + this.extra.hp;
+  }
+
+  transferPercent(value: number) {
+    return value / 100;
+  }
+
+  get spLimit() {
+    return this.transferPercent(this.extra.spLimit);
+  }
+
+  get atkLimit() {
+    return this.transferPercent(this.extra.atkLimit + this.extra.damageLimit);
   }
 }

@@ -28,16 +28,15 @@ export class ComboCriticalComponent {
   @Input() ta: number;
   @Input() critical: number;
   @Input() criticalDamageRatio: number;
+  @Input() spLimit: number;
+  @Input() atkLimit: number;
 
   nzWidthConfig = new Array(3).fill('25%');
 
   fixedDamage(num: number) {
-    return this.shushuSrc.atkLimit(num, AtkType.ta).toFixed(0);
+    return (this.shushuSrc.atkLimit(num, AtkType.ta, this.atkLimit) * (1 + this.spLimit)).toFixed(0);
   }
 
-  fixed(num: number) {
-    return (num * 100).toFixed(2);
-  }
   /**原算法 */
   // get damage() {
   //   return (

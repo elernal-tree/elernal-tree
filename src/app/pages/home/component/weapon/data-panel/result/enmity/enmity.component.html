@@ -1,8 +1,4 @@
-<nz-table
-  [nzBordered]="true"
-  nzSize="small"
-  [nzData]="[1]"
-  [nzShowPagination]="false">
+<nz-table [nzBordered]="true" nzSize="small" [nzData]="[1]" [nzShowPagination]="false">
   <thead>
     <tr>
       <th>方阵</th>
@@ -14,11 +10,11 @@
   </thead>
   <tbody>
     <tr>
-      <td>{{fixed(magunaEnmity)}}</td>
-      <td>{{fixed(normalEnmity)}}</td>
-      <td>{{fixed(exEnmity)}}</td>
-      <td>{{fixed(weaponEnmity / 100)}}</td>
-      <td>{{fixed(sklEnmity / 100)}}</td>
+      <td>{{ magunaEnmity | fixed }}</td>
+      <td>{{ normalEnmity | fixed }}</td>
+      <td>{{ exEnmity | fixed }}</td>
+      <td>{{ (weaponEnmity / 100) | fixed }}</td>
+      <td>{{ (sklEnmity / 100) | fixed }}</td>
     </tr>
   </tbody>
 </nz-table>

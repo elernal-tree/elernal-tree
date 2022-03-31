@@ -43,11 +43,11 @@ export interface ExtraInfo {
   ub: number;
   cri: number; // 暴击率
   criDamageRadio: number; // 爆伤提升
-  /** 攻刃% */
+  /** 普刃 攻刃% */
   atkBuff: number;
   /** 敌方防御力 */
   defense: number;
-  /** 当前hp */
+  /** 当前hp百分比 */
   hpPercent: number;
   weaponEnmity: number;
   weaponStamina: number;
@@ -55,5 +55,18 @@ export interface ExtraInfo {
   sklEnmity: number;
   da: number;
   ta: number;
+  /** 生命值百分比加成 */
   hpBonus: number;
+  /** 奥义上限 */
+  ubLimit: number; 
+  /** 技能上限 */
+  sklLimit: number;
+  /** 全伤害上限 */
+  damageLimit: number;
+  /** 天司被动 最终算 */
+  spLimit: number;
+  /** 增加伤害 比如夏洛特*/
+  damageBonus: number
+  /**  平A上限 */
+  atkLimit: number;
 }

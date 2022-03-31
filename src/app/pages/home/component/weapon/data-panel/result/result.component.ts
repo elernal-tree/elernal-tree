@@ -1,6 +1,7 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { ShushuService } from '@app/core/service/shushu.service';
 import { AtkRatio, CriRatio } from '@src/app/constants/constants';
+import { AtkType } from '@src/app/constants/enum';
 
 @Component({
   selector: 'app-result',
@@ -30,15 +31,14 @@ export class ResultComponent {
   @Input() normalAtk: number;
   @Input() exAtk: number;
   @Input() atkDamage: number;
+  @Input() spLimit: number;
+  @Input() atkLimit: number;
 
   constructor(private shushuSrv: ShushuService) {}
 
-  fixed(num: number) {
-    return (num * 100).toFixed(2);
-  }
 
   fixedAtkDamage(num: number) {
-    return this.shushuSrv.atkLimit(num, 1).toFixed(0);
+    return (this.shushuSrv.atkLimit(num, AtkType.sa, this.atkLimit) * (1 + this.spLimit)).toFixed(0);
   }
 
   get enmityWithHp() {

@@ -32,10 +32,10 @@
   </thead>
   <tbody>
     <tr>
-      <td>{{ fixed(skill) }}</td>
-      <td>{{ fixed(skillLimit) }}</td>
-      <td>{{ fixed(ub) }}</td>
-      <td>{{ fixed(ubLimit) }}</td>
+      <td>{{ skill | fixed }}</td>
+      <td>{{ skillLimit | fixed }}</td>
+      <td>{{ ub | fixed }}</td>
+      <td>{{ ubLimit | fixed }}</td>
     </tr>
   </tbody>
 </nz-table>
@@ -51,18 +51,18 @@
   <tbody>
     <tr>
       <td>通常</td>
-      <td>{{ sklDmage }}</td>
-      <td>{{ ubDamage }}</td>
+      <td>{{ sklDmage | fixed: 0:false }}</td>
+      <td>{{ ubDamage | fixed: 0:false }}</td>
     </tr>
     <tr>
       <td>有利</td>
-      <td>{{ sklUpDamage }}</td>
-      <td>{{ ubUpDamage }}</td>
+      <td>{{ sklUpDamage | fixed:0:false }}</td>
+      <td>{{ ubUpDamage | fixed:0:false }}</td>
     </tr>
     <tr>
       <td>不利</td>
-      <td>{{ sklDownDamage }}</td>
-      <td>{{ ubDownDamage }}</td>
+      <td>{{ sklDownDamage | fixed: 0:false }}</td>
+      <td>{{ ubDownDamage  | fixed: 0:false }}</td>
     </tr>
   </tbody>
 </nz-table>

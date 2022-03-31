@@ -13,6 +13,7 @@ export class SklUbComponent {
   @Input() skillLimit: number;
   @Input() ub: number;
   @Input() ubLimit: number;
+  @Input() spLimit: number;
 
   // 用于计算伤害的技能倍率
   skillRatio = 200;
@@ -21,44 +22,42 @@ export class SklUbComponent {
 
   sklDamageByLimit(damage: number) {
     const limit = Limit.skillDamage * (1 + this.skillLimit);
-    return damage >= limit ? limit : damage;
+    const result = damage >= limit ? limit : damage;
+    return result * (1 + this.spLimit);
   }
 
   get _sklDamage() {
     return ((this.atkDamage * this.skillRatio) / 100) * (1 + this.skill);
   }
   get sklDmage() {
-    return this.sklDamageByLimit(this._sklDamage).toFixed(0);
+    return this.sklDamageByLimit(this._sklDamage);
   }
   get sklUpDamage() {
-    return this.sklDamageByLimit(this._sklDamage * AtkRatio.up).toFixed(0);
+    return this.sklDamageByLimit(this._sklDamage * AtkRatio.up);
   }
 
   get sklDownDamage() {
-    return this.sklDamageByLimit(this._sklDamage * AtkRatio.down).toFixed(0);
+    return this.sklDamageByLimit(this._sklDamage * AtkRatio.down);
   }
 
   ubDamageByLimit(damage: number) {
     const limit = Limit.ubDamage * (1 + this.ubLimit);
-    return damage >= limit ? limit : damage;
+    const result = damage >= limit ? limit : damage;
+    return result * (1 + this.spLimit);
   }
   get _ubDamage() {
     return ((this.atkDamage * this.ubRatio) / 100) * (1 + this.ub);
   }
 
   get ubDamage() {
-    return this.ubDamageByLimit(this._ubDamage).toFixed(0);
+    return this.ubDamageByLimit(this._ubDamage);
   }
 
   get ubUpDamage() {
-    return this.ubDamageByLimit(this._ubDamage * AtkRatio.up).toFixed(0);
+    return this.ubDamageByLimit(this._ubDamage * AtkRatio.up);
   }
 
   get ubDownDamage() {
-    return this.ubDamageByLimit(this._ubDamage * AtkRatio.down).toFixed(0);
-  }
-
-  fixed(num: number) {
-    return (num * 100).toFixed(2);
+    return this.ubDamageByLimit(this._ubDamage * AtkRatio.down);
   }
 }

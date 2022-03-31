@@ -15,9 +15,5 @@ export class EnmityComponent  {
 
   constructor() { }
 
-  fixed(num: number) {
-    return (num * 100).toFixed(2);
-  }
-  
 
 }
